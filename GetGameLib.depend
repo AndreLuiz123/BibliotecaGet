@@ -1,0 +1,79 @@
+# depslib dependency file v1.0
+1545410816 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\main.cpp
+	<iostream>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"Base.h"
+	"Dados.h"
+	"Janela.h"
+
+1545410660 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\dados.cpp
+	<SFML/Window.hpp>
+	<SFML/Graphics.hpp>
+	"Dados.h"
+	<iostream>
+	<string.h>
+	<stdlib.h>
+	<time.h>
+	<sstream>
+	<cmath>
+	"Base.h"
+
+1545315339 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\dados.h
+	<SFML/Window.hpp>
+	<SFML/Graphics.hpp>
+	<string.h>
+
+1543764131 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\getgame.cpp
+
+1543762807 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\getgame.h
+	<SFML/Window.hpp>
+	<SFML/Graphics.hpp>
+	<string.h>
+
+1545143115 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\base.cpp
+	<SFML/Window.hpp>
+	<SFML/Graphics.hpp>
+	<iostream>
+	<string.h>
+	<sstream>
+	<cmath>
+	"Base.h"
+	"Janela.h"
+	"Dados.h"
+
+1545143103 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\base.h
+	<SFML/Window.hpp>
+	<SFML/Graphics.hpp>
+	<string.h>
+	<vector>
+
+1543763867 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\janela.h
+	<SFML/Window.hpp>
+	<string.h>
+
+1544814322 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\janela.cpp
+	<SFML/Window.hpp>
+	<SFML/Graphics.hpp>
+	<iostream>
+	<string.h>
+	"Janela.h"
+	"Dados.h"
+
+1544643628 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\dados2.cpp
+	<SFML/Window.hpp>
+	<SFML/Graphics.hpp>
+	"Dados2.h"
+	<iostream>
+	<string.h>
+	<stdlib.h>
+	<time.h>
+	<sstream>
+	<cmath>
+
+1544643618 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\dados2.h
+	<SFML/Window.hpp>
+	<SFML/Graphics.hpp>
+	<string.h>
+
