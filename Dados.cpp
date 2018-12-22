@@ -80,7 +80,7 @@ int Dados::criarSpriteSheet(string file, int divX, int divY){
             sprit.setTextureRect(sf::IntRect(posicaoX ,posicaoY , textureSize.x, textureSize.y));
             spriteList.push_back(sprit);
 
-
+            cout<<"separa sprite"<<posicaoX-textureSize.x<<" "<<posicaoY-textureSize.y<<endl;
 
             setaPosicaoSpr(spriteList.size()-1, 0, 0);
 
@@ -88,7 +88,7 @@ int Dados::criarSpriteSheet(string file, int divX, int divY){
         }
     }
 
-    cout<<"OLHA AQUI "<<i<<" AQUI TBM "<<j<<endl;
+   // cout<<"OLHA AQUI "<<i<<" AQUI TBM "<<j<<endl;
 
 
     return spriteList.size() - 1;
@@ -122,14 +122,14 @@ int Dados::criarSpriteSheetIrregular(string file, int divX, int divY){
             if(matrizFloodFill[i][j]==false){
        // cout<<i<<" "<<j<<endl;
                 if(img->getPixel(i,j).a > 225){
-                    cout<<limites[0][0]-limites[0][1]<<endl;
+                   /* cout<<limites[0][0]-limites[0][1]<<endl;
                       cout<<limites[1][0]-limites[1][1]<<endl;
                     cout<<i<<" "<<j<<endl;
-                    cout<<endl;
+                    cout<<endl;*/
                     floodFillAux(matrizFloodFill,i,j,img,i,i,j,j,limites);
                     separarSprite(limites[0][0],limites[1][1], limites[0][1],limites[1][0], file);
 
-                    setaPosicaoSpr(spriteList.size()-1, 0, 0);
+                    setaPosicaoSpr(spriteList.size()-1, i, j);
                 //i+=limites[0][1];
                 //j+=limites[1][0];
                 }
@@ -195,17 +195,16 @@ void Dados::floodFillAux(bool **matriz, int x, int y, sf::Image * img, int menor
 
 void Dados::separarSprite(int x, int y, int w, int h, string file){
 
+
         sf::Sprite sprite;
         sf::Texture *tex = new sf::Texture();
 
         tex->loadFromFile(file);
         sprite.setTexture(*tex);
 
-        sprite.setTextureRect(sf::IntRect(x,y,w,h));
+        sprite.setTextureRect(sf::IntRect(x,y,w-x,h-y));
 
         spriteList.push_back(sprite);
-
-      //  cout<<"Separou um sprite!"<<endl;
 
         //   return spriteList.size() - 1;
 

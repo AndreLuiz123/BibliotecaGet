@@ -56,7 +56,7 @@ int main()
     inicializar();
 
    // separarSprite(1, 1, 53,64,"spriteSheetCaveira.png");
-    criarSpriteSheetIrregular("spriteSheetCaveira3.png",9,4);
+    criarSpriteSheetIrregular("spriteSheetCaveira.png",9,4);
 
     setInitCallback(inicializa);
     setUpdateCallback(atualiza);
