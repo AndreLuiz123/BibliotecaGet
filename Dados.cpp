@@ -121,11 +121,11 @@ int Dados::criarSpriteSheetIrregular(string file, int divX, int divY){
 
             if(matrizFloodFill[i][j]==false){
        // cout<<i<<" "<<j<<endl;
-                if(img->getPixel(i,j).a > 225){
-                   /* cout<<limites[0][0]-limites[0][1]<<endl;
+                if(img->getPixel(i,j).a > 100){
+                    cout<<limites[0][0]-limites[0][1]<<endl;
                       cout<<limites[1][0]-limites[1][1]<<endl;
                     cout<<i<<" "<<j<<endl;
-                    cout<<endl;*/
+                    cout<<endl;
                     floodFillAux(matrizFloodFill,i,j,img,i,i,j,j,limites);
                     separarSprite(limites[0][0],limites[1][1], limites[0][1],limites[1][0], file);
 
@@ -152,7 +152,7 @@ int Dados::intervaloPixels(int pontoInicialX, int pontoInicialY, bool sentidoHor
 void Dados::floodFillAux(bool **matriz, int x, int y, sf::Image * img, int menorX, int maiorX, int menorY, int maiorY, int limites[2][2]){
 
     if(matriz[x][y]==false){
-        if(img->getPixel(x,y).a < 225){
+        if(img->getPixel(x,y).a < 100){
             matriz[x][y] = true;
         }else{
             if(x>=maiorX){
@@ -202,7 +202,7 @@ void Dados::separarSprite(int x, int y, int w, int h, string file){
         tex->loadFromFile(file);
         sprite.setTexture(*tex);
 
-        sprite.setTextureRect(sf::IntRect(x,y,w-x,h-y));
+        sprite.setTextureRect(sf::IntRect(x,y,w-x+5,h-y+15));
 
         spriteList.push_back(sprite);
 
