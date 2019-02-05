@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1545528206 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\main.cpp
+1549373364 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\main.cpp
 	<iostream>
 	<stdlib.h>
 	<time.h>
@@ -8,7 +8,7 @@
 	"Dados.h"
 	"Janela.h"
 
-1545528171 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\dados.cpp
+1549392507 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\dados.cpp
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 	"Dados.h"
@@ -20,7 +20,7 @@
 	<cmath>
 	"Base.h"
 
-1545315339 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\dados.h
+1549392335 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\dados.h
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 	<string.h>
@@ -32,7 +32,7 @@
 	<SFML/Graphics.hpp>
 	<string.h>
 
-1545143115 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\base.cpp
+1549392372 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\base.cpp
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 	<iostream>

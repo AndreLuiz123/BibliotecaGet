@@ -98,6 +98,9 @@ int Dados::criarSpriteSheetIrregular(string file, int divX, int divY){
 
     sf::Image *img = new sf::Image();
     int limites[2][2];
+    int desenhaTelaX=0, desenhaTelaY=0;///só para visualização
+
+
 
     img->loadFromFile(file);
 
@@ -109,12 +112,12 @@ int Dados::criarSpriteSheetIrregular(string file, int divX, int divY){
     }
 
 
-    for(int i=0; i<img->getSize().x; i++){
-        for(int j=0; j<img->getSize().y; j++){
-            matrizFloodFill[i][j]=false;
+    for(int i=0; i<img->getSize().y; i++){
+        for(int j=0; j<img->getSize().x; j++){
+            matrizFloodFill[j][i]=false;
         }
     }
-
+    ///MatrizFloodFill indica quais pixels ja foram visitados
 
     for(int i=0; i<img->getSize().x; i++){
         for(int j=0; j<img->getSize().y; j++){
@@ -122,14 +125,26 @@ int Dados::criarSpriteSheetIrregular(string file, int divX, int divY){
             if(matrizFloodFill[i][j]==false){
        // cout<<i<<" "<<j<<endl;
                 if(img->getPixel(i,j).a > 100){
-                    cout<<limites[0][0]-limites[0][1]<<endl;
-                      cout<<limites[1][0]-limites[1][1]<<endl;
-                    cout<<i<<" "<<j<<endl;
-                    cout<<endl;
+                    //cout<<limites[0][1]-limites[0][0]<<endl;
+                    //cout<<limites[1][0]-limites[1][1]<<endl;
+                    //cout<<i<<" "<<j<<endl;
+                    //cout<<endl;
+                    limites[0][0]=i;
+                    limites[1][1]=j;
+                    limites[0][1]=i;
+                    limites[1][0]=j;
                     floodFillAux(matrizFloodFill,i,j,img,i,i,j,j,limites);
-                    separarSprite(limites[0][0],limites[1][1], limites[0][1],limites[1][0], file);
+                    separarSprite(limites[0][0],limites[1][1], limites[0][1],limites[1][0], img, file);
+                    setaPosicaoSpr(spriteList.size()-1, desenhaTelaX*50, desenhaTelaY*50);///só para visualização
+                    //cout<<desenhaTelaX<<endl;
+                    if(desenhaTelaX*50<450){///só para visualização
+                    desenhaTelaX++;///só para visualização
+                    }else{///só para visualização
+                    desenhaTelaX=0;///só para visualização
+                    desenhaTelaY++;///só para visualização
+                    }///só para visualização
 
-                    setaPosicaoSpr(spriteList.size()-1, i, j);
+
                 //i+=limites[0][1];
                 //j+=limites[1][0];
                 }
@@ -138,8 +153,9 @@ int Dados::criarSpriteSheetIrregular(string file, int divX, int divY){
     }
 
 
-     cout<<img->getSize().x<<endl;
+      cout<<img->getSize().x<<endl;
       cout<<img->getSize().y<<endl;
+
 
     return spriteList.size() - 1;
 }
@@ -151,33 +167,31 @@ int Dados::intervaloPixels(int pontoInicialX, int pontoInicialY, bool sentidoHor
 
 void Dados::floodFillAux(bool **matriz, int x, int y, sf::Image * img, int menorX, int maiorX, int menorY, int maiorY, int limites[2][2]){
 
+
+
     if(matriz[x][y]==false){
-        if(img->getPixel(x,y).a < 100){
-            matriz[x][y] = true;
-        }else{
-            if(x>=maiorX){
+        if(img->getPixel(x,y).a > 100){
+            if(x>maiorX){
                 maiorX = x;
                 limites[0][1]=x;
-
             }else{
-                if(x<=menorX){
+                if(x<menorX){
                     menorX = x;
                     limites[0][0]=x;
                 }
             }
-
-            if(y>=maiorY){
+            if(y>maiorY){
                 maiorY = y;
                 limites[1][0]=y;
-
             }else{
-                if(y<=menorY){
+                if(y<menorY){
                     menorY = y;
                     limites[1][1]=y;
                 }
             }
-
             matriz[x][y]=true;
+
+            //img->setPixel(x,y,sf::Color(255,0,0,255));
 
             floodFillAux(matriz,x-1,y+1,img,menorX,maiorX,menorY,maiorY, limites);
             floodFillAux(matriz,x-1,y,img,menorX,maiorX,menorY,maiorY, limites);
@@ -190,24 +204,26 @@ void Dados::floodFillAux(bool **matriz, int x, int y, sf::Image * img, int menor
 
         }
     }
-
 }
+///IDEIA: DEPOIS DE EXECUTAR ESTE ALGORITMO, UM SEGUNDO ALGORITMO É USADO: SUA FUNÇÃO É DETECTAR SE AINDA EXISTEM PIXELS NAS LINHAS SEGUINTES AOS LIMITES JÁ ESCONTRADOS
 
-void Dados::separarSprite(int x, int y, int w, int h, string file){
+
+void Dados::separarSprite(int x, int y, int w, int h, sf::Image * img, string file){
 
 
         sf::Sprite sprite;
         sf::Texture *tex = new sf::Texture();
 
-        tex->loadFromFile(file);
+        tex->loadFromImage(*img);
         sprite.setTexture(*tex);
 
-        sprite.setTextureRect(sf::IntRect(x,y,w-x+5,h-y+15));
+        sprite.setTextureRect(sf::IntRect(x,y,w-x,h-y));
+
+        cout<<w-x<<" "<<h-y<<endl;
 
         spriteList.push_back(sprite);
 
         //   return spriteList.size() - 1;
-
 }
 
 void Dados::moveSprite(int id, float x, float y)

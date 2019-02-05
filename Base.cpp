@@ -41,12 +41,12 @@ int criarSpriteSheetIrregular(string file, int divX, int divY){
 
 }
 
-void separarSprite(int x, int y, int w, int h, string file){
+ /*void separarSprite(int x, int y, int w, int h, string file){
 
     Dados *data = Dados::getInstance();
     data->separarSprite(x,y,w,h,file);
 
-}
+}*/
 
 void posicaoSprite(int id, float x, float y)
 {

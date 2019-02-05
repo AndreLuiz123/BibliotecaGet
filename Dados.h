@@ -35,7 +35,7 @@ public:
     void setaRaioCir(int id, float r);
     void criarBackground(string file);
     int intervaloPixels(int pontoInicialX, int pontoInicialY, bool sentidoHorizontal, sf::Image *img);
-    void separarSprite(int x, int y, int w, int h, string file);
+    void separarSprite(int x, int y, int w, int h, sf::Image * img,string file);
     void floodFillAux(bool **matriz, int x, int y, sf::Image * img, int menorX, int maiorX, int menorY, int maiorY, int limites[2][2]);
 
 
