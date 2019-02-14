@@ -27,32 +27,24 @@ int criarSprite(string file)
     return data->criarSprite(file);
 }
 
-int criarSpriteSheet(string file, int divX, int divY){
-
+int criarSpriteSheet(string file, int divX, int divY)
+{
     Dados *data = Dados::getInstance();
     return data->criarSpriteSheet(file, divX, divY);
-
 }
 
-int criarSpriteSheetIrregular(string file, int divX, int divY){
-
+int criarSpriteSheetIrregular(string file)
+{
     Dados *data = Dados::getInstance();
-    return data->criarSpriteSheetIrregular(file, divX, divY);
-
+    return data->criarSpriteSheetIrregular(file);
 }
-
- /*void separarSprite(int x, int y, int w, int h, string file){
-
-    Dados *data = Dados::getInstance();
-    data->separarSprite(x,y,w,h,file);
-
-}*/
 
 void posicaoSprite(int id, float x, float y)
 {
     Dados *data = Dados::getInstance();
     data->setaPosicaoSpr(id, x, y);
 }
+
 void escalaSprite(int id, float e)
 {
     Dados *data = Dados::getInstance();
@@ -63,6 +55,7 @@ void criarRetangulo()
     Dados *data = Dados::getInstance();
     data->criarRet();
 }
+
 void posicaoRetangulo(int id, float x, float y)
 {
     Dados *data = Dados::getInstance();

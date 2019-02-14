@@ -6,7 +6,7 @@
 #include <string.h>
 
 using namespace std;
-
+///esta função não deveria ter sido criada. Ignore-a
 class Dados{
 private:
 //    vector<sf::Sprite> spriteList;
