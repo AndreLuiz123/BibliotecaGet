@@ -41,6 +41,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Animacao.cpp" />
+		<Unit filename="Animacao.h" />
 		<Unit filename="Base.cpp" />
 		<Unit filename="Base.h" />
 		<Unit filename="Dados.cpp" />

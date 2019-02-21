@@ -53,7 +53,7 @@ void Janela::rodar()
             }
         }
         //updateCallback();
-        window.clear(sf::Color::Blue);
+        window.clear(sf::Color::Green);
 
         window.draw(data->background);
         for(unsigned int i = 0; i < data->spriteList.size(); i++)

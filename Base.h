@@ -33,4 +33,5 @@ bool verificaTeclaPressionada(int id);///VERIFICA QUAL TECLA ESTA SENDO PRESSION
 void moveSprite(int id, float dirX, float dirY);///MOVIMENTA O SPRITE DA POSIÇÃO "ID" DO SPRITELIST NAS DIREÇÕES DIRX E DIRY. PODE SER CONSIDERADA O VECTOR2 DESTA BIBLIOTECA
 void setUpdateCallback(void (*pointer)(void));///RECEBE COMO PARÂMETRO UMA FUNÇÃO E EXECUTA-A. E USADA NO LOOPING INFINITO DO JOGO
 void setInitCallback(void (*pointer)(void));///RECEBE COMO PARÂMETRO UMA FUNÇÃO E EXECUTA-A. E USADA NA INICIALIZAÇÃO DO JOGO
+void animationRun(int primeiroSprite, int tamanhoAnimacao);
 #endif // BASE_H_INCLUDED

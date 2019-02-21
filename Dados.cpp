@@ -318,5 +318,3 @@ void Dados::criarBackground(string file)
     background.setTexture(*t);
 }
 
-
-

@@ -7,6 +7,7 @@
 #include "Base.h"
 #include "Janela.h"
 #include "Dados.h"
+#include "Animacao.h"
 using namespace std;
 
 void inicializar()
@@ -50,6 +51,7 @@ void escalaSprite(int id, float e)
     Dados *data = Dados::getInstance();
     data->setaEscalaSpr(id, e);
 }
+
 void criarRetangulo()
 {
     Dados *data = Dados::getInstance();
@@ -61,21 +63,25 @@ void posicaoRetangulo(int id, float x, float y)
     Dados *data = Dados::getInstance();
     data->setaPosicaoRet(id, x, y);
 }
+
 void tamanhoRetangulo(int id, float l, float h)
 {
     Dados *data = Dados::getInstance();
     data->setaTamRet(id, l, h);
 }
+
 void criarCirculo()
 {
     Dados *data = Dados::getInstance();
     data->criarCir();
 }
+
 void posicaoCirculo(int id, float x, float y)
 {
     Dados *data = Dados::getInstance();
     data->setaPosicaoCir(id, x, y);
 }
+
 void raioCirculo(int id, float r)
 {
     Dados *data = Dados::getInstance();
@@ -154,8 +160,14 @@ void setUpdateCallback(void (*pointer)(void))
     Janela *janela = Janela::getInstance();
     janela->setUpdateCallback(pointer);
 }
+
 void setInitCallback(void (*pointer)(void))
 {
     Janela *janela = Janela::getInstance();
     janela->setInitCallback(pointer);
+}
+
+void animationRun(int primeiroSprite, int tamanhoAnimacao)
+{
+
 }

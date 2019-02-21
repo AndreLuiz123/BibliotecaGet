@@ -59,13 +59,16 @@ int main()
     ///FAZ A JANELA DO JOGO SURGIR
     inicializar();
 
+
+
+
     criarSpriteSheetIrregular("megamanJogoTeste.png");
+    animationRun(0,14);
     ///COLOCA OS ELEMENTOS PRINCIPAIS DO JOGO
     setInitCallback(inicializa);
     ///ATUALIZA COSNTANTEMENTE OS ESTADOS DO JOGO
     setUpdateCallback(atualiza);
     rodar();
-
 
     //delete d;
     return 0;
