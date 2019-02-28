@@ -8,27 +8,37 @@
 #include <time.h>
 #include <string.h>
 #include <vector>
+#include <string>
+
+struct AnimationFrame
+{
+    int x, y;
+    int dx, dy;
+};
 
 class Animation{
 
 private:
     clock_t deltaTime;
     clock_t timer;
-    std::vector<sf::Texture> frames;
+    std::vector<AnimationFrame> frames;
     int frameId;
 
 public:
-    Animation(clock_t timer, std::vector<sf::Texture> frames, clock_t framesDuration);
+    Animation(clock_t timer, clock_t framesDuration);
 
     clock_t getTimer();
     void setTimer(clock_t timer);
-    std::vector<sf::Texture> getFrames();
-    void setFrames(std::vector<sf::Texture> frames);
+    std::vector<sf::Texture*> &getFrames();
+    void setFrames();
     clock_t getDeltaTime();
     void setDeltaTime(clock_t deltaTime);
-    sf::Texture* animationRun();
+    void animationRun();
+    void criarAnimacaoDeArquivoRegular(std::string file,int divX, int divY);
+    AnimationFrame rodarAnimacaoDeArquivoRegular(std::string file, int divX, int divY);
 
      ~Animation();
 };
+
 
 #endif // ANIMACAO_H_INCLUDED

@@ -8,7 +8,7 @@
 #include <sstream>
 #include <cmath>
 #include "Base.h"
-
+#include "Animacao.h"
 
 
 using namespace std;
@@ -318,3 +318,21 @@ void Dados::criarBackground(string file)
     background.setTexture(*t);
 }
 
+void Dados::criarAnimacaoParaRect(int id, string file){
+
+    Animation anim(clock(),100);
+
+    anim.criarAnimacaoDeArquivoRegular(file,9,4);
+
+    animacoes.push_back(anim);
+
+}
+
+void Dados::rodarAnimacaoParaRect(int id, string file){
+
+    spriteList[id].setTextureRect(sf::IntRect(animacoes[id].rodarAnimacaoDeArquivoRegular(file,9,4).x,
+                                              animacoes[id].rodarAnimacaoDeArquivoRegular(file,9,4).y,
+                                              animacoes[id].rodarAnimacaoDeArquivoRegular(file,9,4).dx,
+                                              animacoes[id].rodarAnimacaoDeArquivoRegular(file,9,4).dy));
+
+}

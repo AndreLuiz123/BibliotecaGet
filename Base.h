@@ -31,6 +31,8 @@ void raioCirculo(int id, float r);///REDIMENSIONA O CÍRCULO A PARTIR DE SEU RAIO
 void criarBackground(string file);///CRIA BACKGROUND PARA O JOGO E SALVA-O NO BACKGROUND
 bool verificaTeclaPressionada(int id);///VERIFICA QUAL TECLA ESTA SENDO PRESSIONADA
 void moveSprite(int id, float dirX, float dirY);///MOVIMENTA O SPRITE DA POSIÇÃO "ID" DO SPRITELIST NAS DIREÇÕES DIRX E DIRY. PODE SER CONSIDERADA O VECTOR2 DESTA BIBLIOTECA
+void criarAnimacao(string file, int id);
+void rodarAnimacao(string file, int id);
 void setUpdateCallback(void (*pointer)(void));///RECEBE COMO PARÂMETRO UMA FUNÇÃO E EXECUTA-A. E USADA NO LOOPING INFINITO DO JOGO
 void setInitCallback(void (*pointer)(void));///RECEBE COMO PARÂMETRO UMA FUNÇÃO E EXECUTA-A. E USADA NA INICIALIZAÇÃO DO JOGO
 void animationRun(int primeiroSprite, int tamanhoAnimacao);

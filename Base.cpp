@@ -155,6 +155,18 @@ void moveSprite(int id, float dirX, float dirY)
     data->moveSprite(id, dirX, dirY);
 }
 
+void criarAnimacao(string file, int id){
+
+    Dados *dados = Dados::getInstance();
+    dados->criarAnimacaoParaRect(id,file);
+}
+
+void rodarAnimacao(string file, int id){
+
+    Dados *dados = Dados::getInstance();
+    dados->rodarAnimacaoParaRect(id,file);
+}
+
 void setUpdateCallback(void (*pointer)(void))
 {
     Janela *janela = Janela::getInstance();
