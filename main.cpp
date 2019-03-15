@@ -43,15 +43,16 @@ void atualiza()
     {
         moveSprite(0, speed, 0);
     }
-//rodarAnimacao("spriteSheetCaveira.png",0);
+  rodarAnimacao("Naruto.png",0);
 }
 
 int main()
 {
     //srand(time(NULL));
     inicializar();
-    criarSpriteSheetIrregular("spriteSheetCaveira2.png");
-    criarAnimacao("spriteSheetCaveira.png",0);
+    criarSprite("Naruto.png");
+    criarAnimacao("Naruto.png",9,4);
+   // criarSpriteSheetIrregular("spriteSheetCaveira.png");
 
     setInitCallback(inicializa);
     setUpdateCallback(atualiza);

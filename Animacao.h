@@ -35,7 +35,10 @@ public:
     void setDeltaTime(clock_t deltaTime);
     void animationRun();
     void criarAnimacaoDeArquivoRegular(std::string file,int divX, int divY);
-    AnimationFrame rodarAnimacaoDeArquivoRegular(std::string file, int divX, int divY);
+    void criarAnimacaoDeArquivoIrregular(std::string file);
+    AnimationFrame squareGrowing(int pixelX, int pixelY, int pixelDX, int pixelDY, sf::Image *img, bool ** matriz);
+    void criarAnimacaoComParteDeArquivo(std::string file, int divX, int divY, int linha1, int linha2);
+    AnimationFrame rodarAnimacaoDeArquivoRegular(std::string file);
 
      ~Animation();
 };

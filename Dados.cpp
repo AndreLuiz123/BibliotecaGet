@@ -160,7 +160,9 @@ int Dados::criarSpriteSheetIrregular(string file)
                     limites[1][1]=j;
                     limites[0][1]=i;
                     limites[1][0]=j;
+
                     floodFillAux(matrizFloodFill,i,j,img,i,i,j,j,limites);
+                      //cout<<limites[0][0]<<" "<<limites[1][1]<<" "<<limites[1][0]-limites[1][1]<<" "<<limites[0][1]-limites[0][0]<<endl;
                     separarSprite(limites[0][0],limites[1][1], limites[0][1],limites[1][0], img, file);
                      setaPosicaoSpr(spriteList.size()-1, desenhaTelaX*50, desenhaTelaY*50);///só para visualização
                     if(desenhaTelaX*50<450) ///só para visualização
@@ -187,6 +189,9 @@ void Dados::floodFillAux(bool **matriz, int x, int y, sf::Image * img, int menor
 {
     if(matriz[x][y]==false)
     {
+ if(menorX==maiorX){
+    cout<<x<<" "<<y<<endl;
+ }
         if(img->getPixel(x,y).a > 100)
         {
             if(x>maiorX)
@@ -318,21 +323,23 @@ void Dados::criarBackground(string file)
     background.setTexture(*t);
 }
 
-void Dados::criarAnimacaoParaRect(int id, string file){
+void Dados::criarAnimacao(string file,int divX, int divY){
 
     Animation anim(clock(),100);
 
-    anim.criarAnimacaoDeArquivoRegular(file,9,4);
+    //anim.criarAnimacaoDeArquivoRegular(file,divX,divY);
+    anim.criarAnimacaoDeArquivoIrregular(file);
 
     animacoes.push_back(anim);
 
 }
 
-void Dados::rodarAnimacaoParaRect(int id, string file){
 
-    spriteList[id].setTextureRect(sf::IntRect(animacoes[id].rodarAnimacaoDeArquivoRegular(file,9,4).x,
-                                              animacoes[id].rodarAnimacaoDeArquivoRegular(file,9,4).y,
-                                              animacoes[id].rodarAnimacaoDeArquivoRegular(file,9,4).dx,
-                                              animacoes[id].rodarAnimacaoDeArquivoRegular(file,9,4).dy));
+void Dados::rodarAnimacao(int id, string file){
+
+    spriteList[id].setTextureRect(sf::IntRect(animacoes[id].rodarAnimacaoDeArquivoRegular(file).x,
+                                              animacoes[id].rodarAnimacaoDeArquivoRegular(file).y,
+                                              animacoes[id].rodarAnimacaoDeArquivoRegular(file).dx,
+                                              animacoes[id].rodarAnimacaoDeArquivoRegular(file).dy));
 
 }
