@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1552659562 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\main.cpp
+1553693581 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\main.cpp
 	<iostream>
 	<stdlib.h>
 	<time.h>
@@ -8,7 +8,7 @@
 	"Dados.h"
 	"Janela.h"
 
-1552573024 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\dados.cpp
+1552912454 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\dados.cpp
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 	"Dados.h"
@@ -21,7 +21,7 @@
 	"Base.h"
 	"Animacao.h"
 
-1551383127 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\dados.h
+1552912454 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\dados.h
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 	<string.h>
@@ -34,7 +34,7 @@
 	<SFML/Graphics.hpp>
 	<string.h>
 
-1551383127 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\base.cpp
+1552912786 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\base.cpp
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 	<iostream>
@@ -46,7 +46,7 @@
 	"Dados.h"
 	"Animacao.h"
 
-1551383218 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\base.h
+1552912725 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\base.h
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 	<string.h>
@@ -56,7 +56,7 @@
 	<SFML/Window.hpp>
 	<string.h>
 
-1550668563 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\janela.cpp
+1552853821 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\janela.cpp
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 	<iostream>
@@ -80,7 +80,7 @@
 	<SFML/Graphics.hpp>
 	<string.h>
 
-1552659454 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\animacao.cpp
+1552856685 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\animacao.cpp
 	<SFML/Graphics.hpp>
 	<windows.h>
 	<iostream>
@@ -90,7 +90,7 @@
 	"Animacao.h"
 	<stack>
 
-1552484528 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\animacao.h
+1552853561 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\animacao.h
 	<SFML/Graphics.hpp>
 	<windows.h>
 	<iostream>

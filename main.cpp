@@ -42,8 +42,9 @@ void atualiza()
     if(verificaTeclaPressionada(SETA_DIREITA))
     {
         moveSprite(0, speed, 0);
+
     }
-  rodarAnimacao("Naruto.png",0);
+//rodarAnimacao("naruto2.png",0);
 }
 
 int main()
@@ -51,7 +52,8 @@ int main()
     //srand(time(NULL));
     inicializar();
     criarSprite("Naruto.png");
-    criarAnimacao("Naruto.png",9,4);
+    //escalaSprite(0,10);
+   // criarAnimacaoArquivoIrregular("naruto2.png",100);
    // criarSpriteSheetIrregular("spriteSheetCaveira.png");
 
     setInitCallback(inicializa);

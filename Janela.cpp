@@ -60,6 +60,7 @@ void Janela::rodar()
         {
             window.draw(data->spriteList[i]);
         }
+
         window.display();
     }
 }

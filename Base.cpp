@@ -155,10 +155,16 @@ void moveSprite(int id, float dirX, float dirY)
     data->moveSprite(id, dirX, dirY);
 }
 
-void criarAnimacao(string file, int divX, int divY){
+void criarAnimacaoArquivoRegular(string file, int divX, int divY, int fps){
 
     Dados *dados = Dados::getInstance();
-    dados->criarAnimacao(file, divX, divY);
+    dados->criarAnimacaoArquivoRegular(file, divX, divY, fps);
+}
+
+void criarAnimacaoArquivoIrregular(string file, int fps){
+
+    Dados *dados = Dados::getInstance();
+    dados->criarAnimacaoArquivoIrregular(file, fps);
 }
 
 void rodarAnimacao(string file, int id){

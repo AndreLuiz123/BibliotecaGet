@@ -125,7 +125,7 @@ std::cout<<"arquivo irregular"<<std::endl;
                 if(img->getPixel(i,j).a > 100)
                 {
                     AnimationFrame frame;
-                    frame = squareGrowing(i,j,2,2,img,matrizFloodFill);
+                    frame = squareGrowing(i,j,1,1,img,matrizFloodFill);
                     frames.push_back(frame);
                     //  std::cout<<i<<" "<<j<<std::endl;
                 }else{

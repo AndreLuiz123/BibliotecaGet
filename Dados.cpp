@@ -323,16 +323,26 @@ void Dados::criarBackground(string file)
     background.setTexture(*t);
 }
 
-void Dados::criarAnimacao(string file,int divX, int divY){
+void Dados::criarAnimacaoArquivoRegular(string file,int divX, int divY, int fps){
 
-    Animation anim(clock(),100);
+    Animation anim(clock(),fps);
 
-    //anim.criarAnimacaoDeArquivoRegular(file,divX,divY);
+    anim.criarAnimacaoDeArquivoRegular(file,divX,divY);
+
+    animacoes.push_back(anim);
+
+}
+
+void Dados::criarAnimacaoArquivoIrregular(string file, int fps){
+
+    Animation anim(clock(),fps);
+
     anim.criarAnimacaoDeArquivoIrregular(file);
 
     animacoes.push_back(anim);
 
 }
+
 
 
 void Dados::rodarAnimacao(int id, string file){
@@ -343,3 +353,4 @@ void Dados::rodarAnimacao(int id, string file){
                                               animacoes[id].rodarAnimacaoDeArquivoRegular(file).dy));
 
 }
+

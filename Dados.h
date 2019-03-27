@@ -41,8 +41,10 @@ public:
     void criarBackground(string file);///CRIA BACKGROUND PARA O JOGO E SALVA-O NO BACKGROUND
     void separarSprite(int x, int y, int w, int h, sf::Image * img,string file);///FUNÇÃO AUXILIAR PARA O "criarSpriteSheetIrregular". BASICAMENTE CORTA O ARQUIVO DO PARÂMETRO ENTRE AS COORDENADAS (X,Y) E (W,H)
     void floodFillAux(bool **matriz, int x, int y, sf::Image * img, int menorX, int maiorX, int menorY, int maiorY, int limites[2][2]);///FUNÇÃO AUXILIAR PARA O "criarSpriteSheetIrregular". BASICAMENTE LOCALIZA AS COORDENADAS (X,Y) E (W,H) QUE SERÃO USADAS NO "separaSprite"
-    void criarAnimacao(string file,int divX, int divY);
+    void criarAnimacaoArquivoRegular(string file,int divX, int divY, int fps);
+    void criarAnimacaoArquivoIrregular(string file, int fps);
     void rodarAnimacao(int id, string file);
+    void criarSpriteFrames();
 
 
     ~Dados();
