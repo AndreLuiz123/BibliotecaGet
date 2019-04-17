@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1553693581 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\main.cpp
+1554762335 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\main.cpp
 	<iostream>
 	<stdlib.h>
 	<time.h>
@@ -99,4 +99,6 @@
 	<string.h>
 	<vector>
 	<string>
+
+1554383375 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\gerenciadorinput.cpp
 

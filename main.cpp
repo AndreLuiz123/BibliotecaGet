@@ -18,9 +18,9 @@ enum Teclas
 
 void inicializa()
 {
-    int id = criarSprite("nave.png");
-    posicaoSprite(id, 300, 300);
-    escalaSprite(id, 0.1);
+    //int id = criarSprite("nave.png");
+   // posicaoSprite(id, 300, 300);
+ //   escalaSprite(1, 10);
    // criarBackground("background.png");
 }
 
@@ -44,16 +44,18 @@ void atualiza()
         moveSprite(0, speed, 0);
 
     }
-//rodarAnimacao("naruto2.png",0);
+
+    rodarAnimacao("Pokemon.png",0);
 }
 
 int main()
 {
     //srand(time(NULL));
     inicializar();
-    criarSprite("Naruto.png");
+    criarSprite("Pokemon.png");
+   // escalaSprite(0,15);
     //escalaSprite(0,10);
-   // criarAnimacaoArquivoIrregular("naruto2.png",100);
+    criarAnimacaoArquivoIrregular("Pokemon.png",100);
    // criarSpriteSheetIrregular("spriteSheetCaveira.png");
 
     setInitCallback(inicializa);
