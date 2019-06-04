@@ -22,17 +22,67 @@ Janela* Janela::getInstance()
 
 void Janela::abrir()
 {
-    window.create(sf::VideoMode(800, 600), "Janela Padrao");
+    window.create(sf::VideoMode(largura, altura), "Janela Padrao");
 }
+
 void Janela::fechar()
 {
     window.close();
 }
-bool Janela::estaAberta()
+
+bool Janela::janelaAberta()
 {
     return window.isOpen();
 }
-void Janela::rodar()
+
+void Janela::atualiza()
+{
+
+    /*while(window.pollEvent(event))
+    {
+        //if(event.type == sf::Event::Closed)
+          //  window.close();
+       /* if(event.type == sf::Event::KeyPressed)
+        {
+            if(event.key.code == sf::Keyboard::Escape)
+            {
+                window.close();
+            }
+        }
+    }*/
+    while(window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+            if(event.type == sf::Event::KeyPressed)
+            {
+                if(event.key.code == sf::Keyboard::Escape)
+                {
+                    window.close();
+                }
+            }
+        }
+
+
+        window.clear(sf::Color::Green);
+
+       // window.draw(data->background);
+/*  for(unsigned int i = 0; i < data->spriteList.size(); i++)
+        {
+            window.draw(data->spriteList[i]);
+        }
+*/
+        window.display();
+}
+
+void Janela::setAltura(int alt){
+    altura = alt;
+}
+void Janela::setLargura(int larg){
+    largura = larg;
+}
+
+/*void Janela::rodar()
 {
     Dados *data = Dados::getInstance();
     initCallback();
@@ -63,4 +113,5 @@ void Janela::rodar()
 
         window.display();
     }
-}
+}*/
+

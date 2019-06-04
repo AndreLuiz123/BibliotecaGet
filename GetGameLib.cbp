@@ -54,6 +54,8 @@
 		<Unit filename="GerenciadorInput.h" />
 		<Unit filename="GetGame.cpp" />
 		<Unit filename="GetGame.h" />
+		<Unit filename="Instancia.cpp" />
+		<Unit filename="Instancia.h" />
 		<Unit filename="Janela.cpp" />
 		<Unit filename="Janela.h" />
 		<Unit filename="main.cpp" />

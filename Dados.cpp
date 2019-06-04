@@ -48,6 +48,56 @@ Dados::~Dados()
     delete t;
     cout << "Deleted" << t << endl;
 }
+void Dados::recebeInstancia(Instancia inst)
+{
+    instancias.push_back(inst);
+}
+void Dados::apagarInstancia(int id)
+{
+    instancias.erase(instancias.begin()+id);
+}
+void Dados::recebeAnimacao(Animation anim)
+{
+    animacoes.push_back(anim);
+}
+void Dados::apagarAnimacao(int id)
+{
+    animacoes.erase(animacoes.begin()+5);
+}
+bool Dados::analisaColisaoInstancias(int id1,int id2)
+{
+    return instancias[id1].sprite.getTextureRect().intersects(instancias[id2].sprite.getTextureRect());
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
     Esta função cria um sprite a partir de um arquivo. O sprite criado por esta função é único, e não um conjunto de sprites.
     Espera-se que esta função seja usada com arquivos de imagem com uma, e apenas uma, imagem.
@@ -55,7 +105,7 @@ Dados::~Dados()
     tem como imagem a que esta presente no arquivo passado no parâmetro. Terminados os processos, o novo sprite é adicionado ao
     spriteList, lista que armazena todos os sprites do jogo.
 */
-int Dados::criarSprite(string file)
+/*int Dados::criarSprite(string file)
 {
     sf::Sprite sprit;
     sf::Texture *tex = new sf::Texture();
@@ -73,7 +123,7 @@ int Dados::criarSprite(string file)
     do jogo. O algoritmo recebe como parâmetro o arquivo a ser dividido, o número de subdivisões em X é determinado com divX e subdivisões em
     Y é determinado com divY. Feito o processo de divisão, os sprites são colocados na spritelist
 */
-int Dados::criarSpriteSheet(string file, int divX, int divY)
+/*int Dados::criarSpriteSheet(string file, int divX, int divY)
 {
 
     int i,j, posicaoX, posicaoY;
@@ -121,7 +171,7 @@ int Dados::criarSpriteSheet(string file, int divX, int divY)
   Por fim, o algoritmo pega as coordenadas encontradas no matriz flood fill e usa a função "separa sprite", cortando a imagem e colocando-a no spritelist
 */
 
-int Dados::criarSpriteSheetIrregular(string file)
+/*int Dados::criarSpriteSheetIrregular(string file)
 {
 
     sf::Image *img = new sf::Image();
@@ -185,7 +235,7 @@ int Dados::criarSpriteSheetIrregular(string file)
     Esta função auxilia a função "criarSpriteSheetIrregular". Ela basicamente pega um píxel não transparente e pega todos os píxels não transparentes
     que podem ser acessados a partir dela. Este processo é feito a partir de uma busca em profundidade.
 */
-void Dados::floodFillAux(bool **matriz, int x, int y, sf::Image * img, int menorX, int maiorX, int menorY, int maiorY, int limites[2][2])
+/*void Dados::floodFillAux(bool **matriz, int x, int y, sf::Image * img, int menorX, int maiorX, int menorY, int maiorY, int limites[2][2])
 {
     if(matriz[x][y]==false)
     {
@@ -251,7 +301,7 @@ void Dados::floodFillAux(bool **matriz, int x, int y, sf::Image * img, int menor
 /*
     So separa o sprite entre os pontos x,y,w e h do arquivo file. Função auxiliar do "criarSpriteSheetIrregular"
 */
-void Dados::separarSprite(int x, int y, int w, int h, sf::Image * img, string file)
+/*void Dados::separarSprite(int x, int y, int w, int h, sf::Image * img, string file)
 {
     sf::Sprite sprite;
     sf::Texture *tex = new sf::Texture();
@@ -267,7 +317,7 @@ void Dados::separarSprite(int x, int y, int w, int h, sf::Image * img, string fi
     Movimenta o sprite cuja posição na spriteList é igual a "id" oom as velocidades x para o eixo horizontal e y para o eixo vertical
     Utiliza a função "move" da sfml.
 */
-void Dados::moveSprite(int id, float x, float y)
+/*void Dados::moveSprite(int id, float x, float y)
 {
     spriteList[id].move(x, y);
 }
@@ -279,19 +329,16 @@ void Dados::setaEscalaSpr(int id, float e)
 {
     spriteList[id].setScale(e, e);
 }
-
 void Dados::criarRet()
 {
     sf::RectangleShape shape;
     shape.setFillColor(sf::Color::Green);
     rectList.push_back(shape);
 }
-
 void Dados::setaPosicaoRet(int id, float x, float y)
 {
     rectList[id].setPosition(x,y);
 }
-
 void Dados::setaTamRet(int id, float l, float h)
 {
     rectList[id].setSize(sf::Vector2f(l, h));
@@ -303,17 +350,14 @@ void Dados::criarCir()
     circl.setFillColor(sf::Color::Black);
     circleList.push_back(circl);
 }
-
 void Dados::setaPosicaoCir(int id, float x, float y)
 {
     circleList[id].setPosition(x, y);
 }
-
 void Dados::setaRaioCir(int id, float r)
 {
     circleList[id].setRadius(r);
 }
-
 void Dados::criarBackground(string file)
 {
     //sf::Sprite sprit;
@@ -353,4 +397,4 @@ void Dados::rodarAnimacao(int id, string file){
                                               animacoes[id].rodarAnimacaoDeArquivoRegular(file).dy));
 
 }
-
+*/

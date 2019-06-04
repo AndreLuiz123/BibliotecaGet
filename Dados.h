@@ -5,7 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include <string.h>
 #include "Animacao.h"
-
+#include "Instancia.h"
 using namespace std;
 
 /// O "Dados.h" SERVE PARA GERENCIAR DADOS COMO SPRITES, BACKGROUNDS, AUDIOS, ETC...
@@ -24,9 +24,19 @@ public:
     vector<sf::Sprite> spriteList; ///GUARDA TODOS OS SPRITES DO SEU JOGO. É NESTE VETOR QUE TODAS AS IMAGENS DO SEU JOGO ESTÃO ARMAZENADAS
     vector<sf::RectangleShape> rectList; ///GUARDA TODAS AS FORMAS RETANGULARES DO JOGO
     vector<sf::CircleShape> circleList; ///GUARDA TODAS AS FORMAS CIRCULARES DO JOGO
+
+    vector<Instancia> instancias;
     vector<Animation> animacoes; ///GUARDA ANIMAÇÕES APLICADAS AOS ELEMENTOS DA RECTLIST
     static Dados* getInstance(); ///PERMITE A CRIAÇÃO DE UM OBJETO "DADOS" QUE, POR SUA VEZ, PODE SER USADO NA BASE
-    int criarSprite(string file);///CRIA UM SPRITE A PARTIR DE UM ARQUIVO INSERIDO NO PARÂMETRO E INSERE-O NA SPRITELIST
+
+    void recebeInstancia(Instancia inst);
+    void apagarInstancia(int id);
+    void recebeAnimacao(Animation anim);
+    void apagarAnimacao(int id);
+    bool analisaColisaoPontoEspecificoInstancias(int id1, int id2);
+    bool analisaColisaoInstancias(int id1,int id2);
+
+   /* int criarSprite(string file);///CRIA UM SPRITE A PARTIR DE UM ARQUIVO INSERIDO NO PARÂMETRO E INSERE-O NA SPRITELIST
     int criarSpriteSheet(string file, int divX, int divY);///CRIA SPRITES QUE, EM SEQUÊNCIA, FORMAM UMA ANIMAÇÃO, E INSERE-OS NA SPRITELIST. ESTA FUNÇÃO SÓ FUNCIONA COM SPRITESHEETS REGULARES
     int criarSpriteSheetIrregular(string file);///CRIA SPRITES QUE, EM SEQUÊNCIA, FORMAM UMA ANIMAÇÃO, E INSERE-OS NA SPRITELIST. ESTA FUNÇÃO FUNCIONA COM QUALQUER SPRITESHEET COM FUNDO TRANSPARENTE, MAS É MAIS PESADA
     void setaPosicaoSpr(int id, float x, float y);///POSICIONA O SPRITE DA POSIÇÃO "ID" DO SPRITELIST NA POSIÇÃO (X,Y) DA TELA DO JOGO
@@ -44,12 +54,10 @@ public:
     void criarAnimacaoArquivoRegular(string file,int divX, int divY, int fps);
     void criarAnimacaoArquivoIrregular(string file, int fps);
     void rodarAnimacao(int id, string file);
-    void criarSpriteFrames();
-
+    void criarSpriteFrames();*/
 
     ~Dados();
 
 };
-
 
 #endif // DADOS_H_INCLUDED

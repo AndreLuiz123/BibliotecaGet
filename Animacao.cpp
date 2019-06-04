@@ -95,6 +95,9 @@ void Animation::criarAnimacaoDeArquivoRegular(std::string file,int divX, int div
 void Animation::criarAnimacaoDeArquivoIrregular(std::string file)
 {
 
+    arquivoDaAnimacao = file;
+    arquivoAnimacao.loadFromFile(file);
+
     sf::Image *img = new sf::Image();
     img->loadFromFile(file);
 
@@ -188,7 +191,7 @@ AnimationFrame Animation::squareGrowing(int pixelX, int pixelY, int pixelDX, int
 
         for(i=pixelX; i<pixelX+pixelDX; i++)
         {
-           if(img->getPixel(i, pixelY).a>100 && pixelY>2)
+           if(img->getPixel(i, pixelY).a>100 && pixelY>1)
            {
                 pixelY--;
                 borda=true;
@@ -197,7 +200,7 @@ AnimationFrame Animation::squareGrowing(int pixelX, int pixelY, int pixelDX, int
 
         for(i=pixelX; i<pixelX+pixelDX; i++)
         {
-           if(img->getPixel(i, pixelY+pixelDY).a>100 && pixelY+pixelDY<img->getSize().y-2)
+           if(img->getPixel(i, pixelY+pixelDY).a>100 && pixelY+pixelDY<img->getSize().y-1)
            {
                 pixelDY++;
                 borda=true;
@@ -206,7 +209,7 @@ AnimationFrame Animation::squareGrowing(int pixelX, int pixelY, int pixelDX, int
 
         for(i=pixelY; i<pixelY+pixelDY; i++)
         {
-            if(img->getPixel(pixelX,i).a>100 && pixelX>2)
+            if(img->getPixel(pixelX,i).a>100 && pixelX>1)
            {
                 pixelX--;
                 borda=true;
@@ -215,7 +218,7 @@ AnimationFrame Animation::squareGrowing(int pixelX, int pixelY, int pixelDX, int
 
         for( i=pixelY; i<pixelY+pixelDY; i++)
         {
-           if(img->getPixel(pixelX+pixelDX,i).a>100 && pixelX + pixelDX<img->getSize().x-2)
+           if(img->getPixel(pixelX+pixelDX,i).a>100 && pixelX + pixelDX<img->getSize().x-1)
            {
                 pixelDX++;
                 borda=true;

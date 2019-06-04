@@ -4,6 +4,8 @@
 #include <SFML/Graphics.hpp>
 #include <string.h>
 #include <vector>
+#include "GerenciadorInput.h"
+#include "Instancia.h"
 
 ///A "Base.h" SERVE PARA A CHAMADA DAS FUNÇÕES DOS OUTROS TAD SEM QUE SEJA NECESSÁRIO A CRIAÇÃO DE UM OBJETO PRA ISSO
 
@@ -12,8 +14,9 @@ using namespace std;
 ///AS FUNÇÕES ABAIXO SÃO AS QUE O USUÁRIO DA BIBLIOTECA IRÁ UTILIZAR. EM RESUMO ELAS CHAMAM AS FUNÇÕES DOS OUTROS TAD.
 ///COMO DITO ANTERIORMENTE, SERVE PARA O USUÁRIO DA BIBLIOTECA CHAMAR AS FUNÇÕES SEM A NECESSIDADE DE CRIAR UM OBJETO DO TIPO "Dados" OU "Janela"
 ///POR VIA DAS DÚVIDAS, A DESCRIÇÃO DAS FUNÇÕES DOS OUTROS TAD FORAM COPIADAS PARA SUAS CORRESPONDENTES NESTE TAD.
-void inicializar();/// CRIA A JANELA DO JOGO
+void inicializar(int altura=600, int largura=800);/// CRIA A JANELA DO JOGO
 bool janelaAberta();///VERIFICA SE A JANELA ESTA OU NÃO ABERTA
+void atualiza();
 void rodar();/// FAZ A JANELA RODAR O JOGO. PARA ISTO, ESTA FUNÇÃO UTILIZA TODAS AS OUTRAS FUNÇÕES DO TAD "Janela.h"
 int criarSprite(string file);///CRIA UM SPRITE A PARTIR DE UM ARQUIVO INSERIDO NO PARÂMETRO E INSERE-O NA SPRITELIST
 int criarSpriteSheet(string file, int divX, int divY);///CRIA SPRITES QUE, EM SEQUÊNCIA, FORMAM UMA ANIMAÇÃO, E INSERE-OS NA SPRITELIST. ESTA FUNÇÃO SÓ FUNCIONA COM SPRITESHEETS REGULARES
@@ -37,4 +40,16 @@ void rodarAnimacao(string file, int id);
 void setUpdateCallback(void (*pointer)(void));///RECEBE COMO PARÂMETRO UMA FUNÇÃO E EXECUTA-A. E USADA NO LOOPING INFINITO DO JOGO
 void setInitCallback(void (*pointer)(void));///RECEBE COMO PARÂMETRO UMA FUNÇÃO E EXECUTA-A. E USADA NA INICIALIZAÇÃO DO JOGO
 void animationRun(int primeiroSprite, int tamanhoAnimacao);
+bool pressionarTecla(int tecla);
+bool verificaMousePressionado(int botaoMouse);
+bool pressionarBotaoMouse(int botaoMouse);
+bool verificaPosicaoMouseEmIntervalo(int x1, int x2, int y1, int y2);
+sf::Vector2i retornaPosicaoMouse();
+void criarInstancia(Instancia inst);
+void apagarInstancia(int id);
+void criarAnimacao(Animation anim);
+void apagarAnimacao(int id);
+bool analisaColisaoPontoEspecificoInstancias(int id1, int id2);
+bool analisaColisaoInstancias(int id1,int id2);
+
 #endif // BASE_H_INCLUDED

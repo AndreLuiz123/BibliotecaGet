@@ -8,11 +8,16 @@
 #include "Janela.h"
 #include "Dados.h"
 #include "Animacao.h"
+#include "GerenciadorInput.h"
 using namespace std;
 
-void inicializar()
+GerenciadorInput gerInp;
+
+void inicializar(int altura, int largura)
 {
     Janela *janela = Janela::getInstance();
+    janela->setAltura(altura);
+    janela->setLargura(largura);
     janela->abrir();
 }
 
@@ -22,7 +27,7 @@ void finalizarJogo()
     janela->fechar();
 }
 
-int criarSprite(string file)
+/*int criarSprite(string file)
 {
     Dados *data = Dados::getInstance();
     return data->criarSprite(file);
@@ -93,18 +98,24 @@ void criarBackground(string file)
     Dados *data = Dados::getInstance();
     data->criarBackground(file);
 }
-
-void rodar()
+*/
+/*void rodar()
 {
     Janela *janela = Janela::getInstance();
     janela->rodar();
 
-}
+}*/
 
 bool janelaAberta()
 {
     Janela *janela = Janela::getInstance();
-    return janela->estaAberta();
+    return janela->janelaAberta();
+}
+
+void atualiza()
+{
+    Janela *janela = Janela::getInstance();
+    janela->atualiza();
 }
 
 bool verificaTeclaPressionada(int id)
@@ -149,7 +160,7 @@ bool verificaTeclaPressionada(int id)
     }
 
 }
-void moveSprite(int id, float dirX, float dirY)
+/*void moveSprite(int id, float dirX, float dirY)
 {
     Dados *data = Dados::getInstance();
     data->moveSprite(id, dirX, dirY);
@@ -172,20 +183,81 @@ void rodarAnimacao(string file, int id){
     Dados *dados = Dados::getInstance();
     dados->rodarAnimacao(id,file);
 }
-
-void setUpdateCallback(void (*pointer)(void))
+*/
+/*void setUpdateCallback(void (*pointer)(void))
 {
     Janela *janela = Janela::getInstance();
     janela->setUpdateCallback(pointer);
-}
+}*/
 
-void setInitCallback(void (*pointer)(void))
+/*void setInitCallback(void (*pointer)(void))
 {
     Janela *janela = Janela::getInstance();
     janela->setInitCallback(pointer);
-}
-
+}*/
 void animationRun(int primeiroSprite, int tamanhoAnimacao)
 {
 
+}
+bool pressionarTecla(int tecla){
+   // Janela *janela = Janela::getInstance();
+   /* janela->window.setKeyRepeatEnabled(false);*/
+   GerenciadorInput *gerInp = GerenciadorInput::getInstance();
+   return gerInp->teclaPressionada(tecla);
+}
+
+bool segurarTecla(int tecla){
+    GerenciadorInput *gerInp = GerenciadorInput::getInstance();
+    return gerInp->teclaPressionada(tecla);
+}
+void verificaTeclaLargada(int tecla){
+
+}
+bool verificaMousePressionado(int botaoMouse){
+    GerenciadorInput *gerInp = GerenciadorInput::getInstance();
+    return gerInp->mousePressionado(botaoMouse);
+}
+bool pressionarBotaoMouse(int botaoMouse){
+    GerenciadorInput *gerInp = GerenciadorInput::getInstance();
+    return gerInp->mousePressionado(botaoMouse);
+}
+/*
+posicaoMouse verificaPosicaoMouse(){
+return gerInp.verificaPosicaoMouse();
+}
+*/
+bool verificaPosicaoMouseEmIntervalo(int x1, int x2, int y1, int y2){
+    GerenciadorInput *gerInp = GerenciadorInput::getInstance();
+    gerInp->intervaloPosicaoMouse(x1,x2,y1,y2);
+}
+sf::Vector2i retornaPosicaoMouse(){
+    GerenciadorInput *gerInp = GerenciadorInput::getInstance();
+    gerInp->retornaPosicaoMouse();
+}
+void criarInstancia(){
+    Dados *data = Dados::getInstance();
+    Instancia inst;
+    data->recebeInstancia(inst);
+}
+void apagarInstancia(int id){
+    Dados *data = Dados::getInstance();
+    data->apagarInstancia(id);
+}
+void criarAnimacao(string arquivoAnimacao, float deltaTime){
+    Dados *data = Dados::getInstance();
+    Animation anim(0,deltaTime);
+    anim.criarAnimacaoDeArquivoIrregular(arquivoAnimacao);
+    data->recebeAnimacao(anim);
+}
+void apagarAnimacao(int id){
+    Dados *data = Dados::getInstance();
+    data->apagarAnimacao(id);
+}
+bool analisaColisaoPontoEspecificoInstancias(int id1, int id2){
+    //Dados *data = Dados::getInstance();
+    //data->analisaColisaoInstancias(id1, id2);
+}
+bool analisaColisaoInstancias(int id1,int id2){
+    Dados *data = Dados::getInstance();
+    data->analisaColisaoInstancias(id1,id2);
 }

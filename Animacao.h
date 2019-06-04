@@ -25,13 +25,14 @@ private:
     int frameId;
 
 public:
-
+    std::string arquivoDaAnimacao;
+ sf::Texture arquivoAnimacao;
     Animation(clock_t timer, clock_t framesDuration);
 
     clock_t getTimer();
     void setTimer(clock_t timer);
     std::vector<sf::Texture*> &getFrames();
-     std::vector<AnimationFrame> frames;
+    std::vector<AnimationFrame> frames;
     void setFrames();
     clock_t getDeltaTime();
     void setDeltaTime(clock_t deltaTime);
