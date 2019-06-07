@@ -26,7 +26,7 @@ private:
 
 public:
     std::string arquivoDaAnimacao;
- sf::Texture arquivoAnimacao;
+    sf::Texture arquivoAnimacao;
     Animation(clock_t timer, clock_t framesDuration);
 
     clock_t getTimer();
@@ -42,6 +42,10 @@ public:
     AnimationFrame squareGrowing(int pixelX, int pixelY, int pixelDX, int pixelDY, sf::Image *img, bool ** matriz);
     void criarAnimacaoComParteDeArquivo(std::string file, int divX, int divY, int linha1, int linha2);
     AnimationFrame rodarAnimacaoDeArquivoRegular(std::string file);
+    void trocarPosicaoFrames(int frame1, int frame2);
+    void apagarFrame(int frame);
+    static bool compara(AnimationFrame &a1, AnimationFrame &a2);
+    static bool comparaY(AnimationFrame &a1, AnimationFrame &a2);
 
      ~Animation();
 };

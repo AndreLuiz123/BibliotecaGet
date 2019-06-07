@@ -3,14 +3,12 @@
 Instancia::Instancia()
 {
 
-    teste = new sf::RectangleShape(sf::Vector2f(100,100));
-    teste->setFillColor(sf::Color::Blue);
     sprite.setOrigin(sf::Vector2f(25,25)/**/);
 
 }
 Instancia::~Instancia()
 {
-    delete teste;
+   // delete teste;
 }
 
 float Instancia::getPosX(){
@@ -108,17 +106,22 @@ void Instancia::setOrientacao(float angulo)
 {
     sprite.setRotation(angulo);
 }
-void Instancia::rodarAnimacao(int id, std::string file)
+void Instancia::rodarAnimacao(int id)
 {
     int N = 0;
-   sprite.setTextureRect(sf::IntRect(animacoes[id].rodarAnimacaoDeArquivoRegular(file).x,
-                                               animacoes[id].rodarAnimacaoDeArquivoRegular(file).y,
-                                               animacoes[id].rodarAnimacaoDeArquivoRegular(file).dx,
-                                               animacoes[id].rodarAnimacaoDeArquivoRegular(file).dy));
-  /*  sprite.setTextureRect(sf::IntRect(animacoes[id].frames[N].x,
+    //std::string arq;
+
+    //arq = ;
+
+   /*sprite.setTextureRect(sf::IntRect(animacoes[id].rodarAnimacaoDeArquivoRegular(animacoes[id].arquivoDaAnimacao).x,
+                                               animacoes[id].rodarAnimacaoDeArquivoRegular(animacoes[id].arquivoDaAnimacao).y,
+                                               animacoes[id].rodarAnimacaoDeArquivoRegular(animacoes[id].arquivoDaAnimacao).dx,
+                                               animacoes[id].rodarAnimacaoDeArquivoRegular(animacoes[id].arquivoDaAnimacao).dy));(/
+    */sprite.setTextureRect(sf::IntRect(animacoes[id].frames[N].x,
                                       animacoes[id].frames[N].y,
                                       animacoes[id].frames[N].dx,
                                       animacoes[id].frames[N].dy));
-    sprite.setOrigin(sprite.getTextureRect().width/2,sprite.getTextureRect().height/2);*/
+     sprite.setOrigin(sprite.getTextureRect().width/2,sprite.getTextureRect().height/2);
+    //std::cout<<animacoes[id].rodarAnimacaoDeArquivoRegular(file).x<<std::endl;
 }
 

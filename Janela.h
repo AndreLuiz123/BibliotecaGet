@@ -4,7 +4,7 @@
 
 #include <SFML/Window.hpp>
 #include <string.h>
-
+#include "Dados.h"
 using namespace std;
 
 /// A "Janela.h" SERVE PARA GERAR, APAGAR, COLORIR, ENTRE VÁRIAS OUTRAS COISAS, A JANELA DO JOGO EM PRODUÇÃO
@@ -27,7 +27,7 @@ public:
   //  void setUpdateCallback(void (*pointer)(void)) { updateCallback = pointer; } ///RECEBE COMO PARÂMETRO UMA FUNÇÃO E EXECUTA-A. É USADA NO LOOPING INFINITO DO JOGO
   //  void setInitCallback(void (*pointer)(void)) { initCallback = pointer; } ///RECEBE COMO PARÂMETRO UMA FUNÇÃO E EXECUTA-A. É USADA NA INICIALIZAÇÃO DO JOGO
     bool janelaAberta(); ///VERIFICA SE A JANELA ESTA OU NÃO ABERTA
-    void atualiza();
+    void atualiza(Dados *data);
     void abrir(); /// CRIA A JANELA DO JOGO
     void fechar(); ///FECHA A JANELA DO JOGO
     void setAltura(int alt);

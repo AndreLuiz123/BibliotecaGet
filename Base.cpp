@@ -9,6 +9,7 @@
 #include "Dados.h"
 #include "Animacao.h"
 #include "GerenciadorInput.h"
+#include "Instancia.h"
 using namespace std;
 
 GerenciadorInput gerInp;
@@ -115,7 +116,8 @@ bool janelaAberta()
 void atualiza()
 {
     Janela *janela = Janela::getInstance();
-    janela->atualiza();
+    Dados *data = Dados::getInstance();
+    janela->atualiza(data);
 }
 
 bool verificaTeclaPressionada(int id)
@@ -243,16 +245,48 @@ void apagarInstancia(int id){
     Dados *data = Dados::getInstance();
     data->apagarInstancia(id);
 }
-void criarAnimacao(string arquivoAnimacao, float deltaTime){
+void moverInstancia(int idInstancia, float dx, float dy){
+    Dados *data = Dados::getInstance();
+    data->instancias[idInstancia].movePersonagem(dx, dy);
+}
+void colocarInstanciaPosicao(int idInstancia, float x, float y){
+    Dados *data = Dados::getInstance();
+    data->instancias[idInstancia].movePara(x,y);
+}
+void rotacionarInstancia(int idInstancia, float angulo){
+    Dados *data = Dados::getInstance();
+    data->instancias[idInstancia].rotaciona(angulo);
+}
+void colocarOrientacaoInstancia(int idInstancia, float angulo){
+    Dados *data = Dados::getInstance();
+    data->instancias[idInstancia].setOrientacao(angulo);
+}
+void colocarEscalaInstancia(int idInstancia, float escala){
+    Dados *data = Dados::getInstance();
+    data->instancias[idInstancia].setEscala(escala);
+}
+void virarSpriteXInstancia(int idInstancia){
+    Dados *data = Dados::getInstance();
+    data->instancias[idInstancia].virarSpriteX();
+}
+void virarSpriteYInstancia(int idInstancia){
+    Dados *data = Dados::getInstance();
+    data->instancias[idInstancia].virarSpriteY();
+}
+
+void criarAnimacao(string arquivoAnimacao, float deltaTime, int idInstancia){
     Dados *data = Dados::getInstance();
     Animation anim(0,deltaTime);
     anim.criarAnimacaoDeArquivoIrregular(arquivoAnimacao);
-    data->recebeAnimacao(anim);
+    data->instancias[idInstancia].adicionaAnimacao(anim);
+    data->instancias[idInstancia].setPosicao(30,30);
+    //data->recebeAnimacao(anim);
 }
 void apagarAnimacao(int id){
     Dados *data = Dados::getInstance();
     data->apagarAnimacao(id);
 }
+
 bool analisaColisaoPontoEspecificoInstancias(int id1, int id2){
     //Dados *data = Dados::getInstance();
     //data->analisaColisaoInstancias(id1, id2);

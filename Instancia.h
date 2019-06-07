@@ -32,14 +32,14 @@ class Instancia
         void movePersonagem(float dx, float dy);
         void setPosicao(int x, int y);
         void setEscala(int escala);
-        void rodarAnimacao(int animacao);
+        //void rodarAnimacao(int animacao, std::string file);
         void virarSpriteX();
         void virarSpriteY();
         float area();
         void rotaciona(float angulo);
         void setOrientacao(float angulo);
         void atribuirTexturaPersonagem(std::string file);
-        void rodarAnimacao(int id, std::string file);
+        void rodarAnimacao(int id);
 };
 
 #endif // INSTANCIA_H_INCLUDED

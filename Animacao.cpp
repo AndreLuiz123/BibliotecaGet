@@ -6,6 +6,7 @@
 #include <string.h>
 #include "Animacao.h"
 #include <stack>
+#include <algorithm>
 
 Animation::Animation(clock_t timer, clock_t framesDuration)
 {
@@ -88,7 +89,7 @@ void Animation::criarAnimacaoDeArquivoRegular(std::string file,int divX, int div
         }
     }
 
-    std::cout<<frames.size()<<std::endl;
+
 
 }
 
@@ -137,8 +138,23 @@ std::cout<<"arquivo irregular"<<std::endl;
             }
         }
     }
-
+   // std::sort(frames.begin(), frames.end(), compara);
 }
+
+ bool Animation::compara(AnimationFrame &a1, AnimationFrame &a2){
+
+    /*if(a1.y < a2.y)
+        return true;
+    else*/
+        if(sqrt(a1.x*a1.x + a1.y*a1.y) < sqrt(a2.x*a2.x + a2.y*a2.y))
+           return true;
+
+        //if(a1.y>a2.y)
+          //  return true;
+
+
+      return false;
+ }
 
 /*AnimationFrame buscaEmProfundidade(AnimationFrame frame, bool **matriz, sf::Image img)
 {
@@ -191,7 +207,7 @@ AnimationFrame Animation::squareGrowing(int pixelX, int pixelY, int pixelDX, int
 
         for(i=pixelX; i<pixelX+pixelDX; i++)
         {
-           if(img->getPixel(i, pixelY).a>100 && pixelY>1)
+           if( pixelY>0 && img->getPixel(i, pixelY).a>100)
            {
                 pixelY--;
                 borda=true;
@@ -200,7 +216,7 @@ AnimationFrame Animation::squareGrowing(int pixelX, int pixelY, int pixelDX, int
 
         for(i=pixelX; i<pixelX+pixelDX; i++)
         {
-           if(img->getPixel(i, pixelY+pixelDY).a>100 && pixelY+pixelDY<img->getSize().y-1)
+           if(pixelY+pixelDY<img->getSize().y && img->getPixel(i, pixelY+pixelDY).a>100)
            {
                 pixelDY++;
                 borda=true;
@@ -209,7 +225,7 @@ AnimationFrame Animation::squareGrowing(int pixelX, int pixelY, int pixelDX, int
 
         for(i=pixelY; i<pixelY+pixelDY; i++)
         {
-            if(img->getPixel(pixelX,i).a>100 && pixelX>1)
+            if(pixelX>0 && img->getPixel(pixelX,i).a>100)
            {
                 pixelX--;
                 borda=true;
@@ -218,7 +234,7 @@ AnimationFrame Animation::squareGrowing(int pixelX, int pixelY, int pixelDX, int
 
         for( i=pixelY; i<pixelY+pixelDY; i++)
         {
-           if(img->getPixel(pixelX+pixelDX,i).a>100 && pixelX + pixelDX<img->getSize().x-1)
+           if(pixelX + pixelDX<img->getSize().x && img->getPixel(pixelX+pixelDX,i).a>100)
            {
                 pixelDX++;
                 borda=true;
@@ -235,8 +251,7 @@ AnimationFrame Animation::squareGrowing(int pixelX, int pixelY, int pixelDX, int
         }
     }
 
-
-    std::cout<<pixelDX<<std::endl;
+    std::cout<<pixelX<<std::endl;
 
     newFrame.x  = pixelX;
     newFrame.y  = pixelY;

@@ -45,11 +45,18 @@ bool verificaMousePressionado(int botaoMouse);
 bool pressionarBotaoMouse(int botaoMouse);
 bool verificaPosicaoMouseEmIntervalo(int x1, int x2, int y1, int y2);
 sf::Vector2i retornaPosicaoMouse();
-void criarInstancia(Instancia inst);
+void criarInstancia();
 void apagarInstancia(int id);
-void criarAnimacao(Animation anim);
+void criarAnimacao(string arquivoAnimacao, float deltaTime, int idInstancia);
 void apagarAnimacao(int id);
 bool analisaColisaoPontoEspecificoInstancias(int id1, int id2);
 bool analisaColisaoInstancias(int id1,int id2);
+void moverInstancia(int idInstancia, float dx, float dy);
+void colocarInstanciaPosicao(int idInstancia, float x, float y);
+void rotacionarInstancia(int idInstancia, float angulo);
+void colocarOrientacaoInstancia(int idInstancia, float angulo);
+void colocarEscalaInstancia(int idInstancia, float escala);
+void virarSpriteXInstancia(int idInstancia);
+void virarSpriteYInstancia(int idInstancia);
 
 #endif // BASE_H_INCLUDED

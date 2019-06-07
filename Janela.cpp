@@ -35,7 +35,7 @@ bool Janela::janelaAberta()
     return window.isOpen();
 }
 
-void Janela::atualiza()
+void Janela::atualiza(Dados *data)
 {
 
     /*while(window.pollEvent(event))
@@ -63,15 +63,22 @@ void Janela::atualiza()
             }
         }
 
-
-        window.clear(sf::Color::Green);
-
-       // window.draw(data->background);
-/*  for(unsigned int i = 0; i < data->spriteList.size(); i++)
+        for(unsigned int i = 0; i < data->instancias.size(); i++)
         {
-            window.draw(data->spriteList[i]);
+//            for()
+               data->instancias[i].rodarAnimacao(0);
         }
-*/
+
+       // cout<<data->instancias.size()<<endl;
+        window.clear();
+       // window.draw(data->background);
+        for(unsigned int i = 0; i < data->instancias.size(); i++)
+        {
+            //window.draw(data->spriteList[i]);
+            //cout<<i<<endl;
+            window.draw(data->instancias[i].sprite);
+        }
+
         window.display();
 }
 
