@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1560228514 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\main.cpp
+1560262160 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\main.cpp
 	<iostream>
 	<stdlib.h>
 	<time.h>
@@ -40,7 +40,7 @@
 	<SFML/Graphics.hpp>
 	<string.h>
 
-1560227785 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\base.cpp
+1560261564 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\base.cpp
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 	<iostream>
@@ -55,7 +55,7 @@
 	"Instancia.h"
 	"Level.h"
 
-1560227785 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\base.h
+1560262018 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\base.h
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 	<string.h>
@@ -65,12 +65,12 @@
 	"Camera.h"
 	"Level.h"
 
-1560203407 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\janela.h
+1560255171 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\janela.h
 	<SFML/Window.hpp>
 	<string.h>
 	"Dados.h"
 
-1560228432 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\janela.cpp
+1560255129 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\janela.cpp
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 	<iostream>
@@ -128,28 +128,28 @@
 1560224653 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\instancia.cpp
 	"Instancia.h"
 
-1560224653 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\instancia.h
+1560254275 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\instancia.h
 	<vector>
 	<string>
 	"Animacao.h"
 
-1560223217 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\level.h
+1560261564 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\level.h
 	"Instancia.h"
 	"Camera.h"
 	<vector>
 
-1560228236 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\level.cpp
+1560261634 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\level.cpp
 	"Level.h"
 	<string>
 
-1560223268 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\camera.cpp
+1560261267 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\camera.cpp
 	"Camera.h"
 	<iostream>
 	<stdlib.h>
 	<time.h>
 	<string.h>
 
-1560223268 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\camera.h
+1560260677 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\camera.h
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 

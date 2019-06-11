@@ -35,7 +35,7 @@ bool Janela::janelaAberta()
     return window.isOpen();
 }
 
-void Janela::atualiza(Dados *data)
+void Janela::atualiza(Dados *data, int nivelAtual)
 {
 
     /*while(window.pollEvent(event))
@@ -71,30 +71,30 @@ void Janela::atualiza(Dados *data)
 
     // cout<<data->instancias.size()<<endl;
     if(data->niveis.size()>0)
-        if(data->niveis[0].cam.tipoCam!=PADRAO_ORIGINAL)
-            switch(data->niveis[0].cam.tipoCam)
+        if(data->niveis[nivelAtual].cam->tipoCam!=PADRAO_ORIGINAL)
+            switch(data->niveis[nivelAtual].cam->tipoCam)
             {
             case PADRAO_JOGADOR:
-                data->niveis[0].padraoCameraJogador(data->instancias[0]);
+                data->niveis[nivelAtual].padraoCameraJogador(data->instancias[0]);
                 break;
             case PADRAO_HORIZONTAL:
-                data->niveis[0].padraoCameraHorizontal(data->instancias[0]);
+                data->niveis[nivelAtual].padraoCameraHorizontal(data->instancias[0]);
                 break;
             case PADRAO_VERTICAL:
-                data->niveis[0].padraoCameraVertical(data->instancias[0]);
+                data->niveis[nivelAtual].padraoCameraVertical(data->instancias[0]);
                 break;
             case PADRAO_SALAS:
-                data->niveis[0].padraoCameraSalas(data->instancias[0]);
+                data->niveis[nivelAtual].padraoCameraSalas(data->instancias[0]);
                 break;
             }
-    //  data->niveis[0].padraoCameraVertical(data->instancias[0]);
+    //  data->niveis[nivelAtual].padraoCameraVertical(data->instancias[0]);
     window.clear();
     ///window.setView(data->cameras[0].camera);
     if(data->niveis.size()>0)
     {
-        window.setView(data->niveis[0].cam.camera);
+        window.setView(data->niveis[nivelAtual].cam->camera);
         // window.draw(data->background);
-        window.draw(data->niveis[0].background);
+        window.draw(data->niveis[nivelAtual].background);
     }
 
     for(unsigned int i = 0; i < data->instancias.size(); i++)

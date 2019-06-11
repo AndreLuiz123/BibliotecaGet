@@ -114,11 +114,11 @@ bool janelaAberta()
     return janela->janelaAberta();
 }
 
-void atualiza()
+void atualiza(int nivelAtual)
 {
     Janela *janela = Janela::getInstance();
     Dados *data = Dados::getInstance();
-    janela->atualiza(data);
+    janela->atualiza(data, nivelAtual);
 }
 
 bool verificaTeclaPressionada(int id)
@@ -238,9 +238,9 @@ sf::Vector2i retornaPosicaoMouse(){
     gerInp->retornaPosicaoMouse();
 }
 
-void criarNivel(std::string fileBackground, float largura, float altura, int cam){
+void criarCenario(std::string fileBackground, float largura, float altura, int cam){
     Dados *data = Dados::getInstance();
-    Level lv(fileBackground, largura, altura, data->cameras[cam]);
+    Level lv(fileBackground, largura, altura, &data->cameras[cam]);
     data->niveis.push_back(lv);
 }
 
@@ -272,6 +272,10 @@ void colocarOrientacaoCamera(int idCamera, float angulo){
 void zoomCamera(int idCamera, float aproximacao){
     Dados *data = Dados::getInstance();
     data->cameras[idCamera].zoom(aproximacao);
+}
+void colocaTamanhoCamera(int idCamera, float x, float y){
+    Dados *data = Dados::getInstance();
+    data->cameras[idCamera].colocaTamanhoCamera(x,y);
 }
 void criarInstancia(){
     Dados *data = Dados::getInstance();
@@ -331,4 +335,14 @@ bool analisaColisaoPontoEspecificoInstancias(int id1, int id2){
 bool analisaColisaoInstancias(int id1,int id2){
     Dados *data = Dados::getInstance();
     data->analisaColisaoInstancias(id1,id2);
+}
+
+bool limitesCenario(int cenario, int instancia){
+     Dados *data = Dados::getInstance();
+     return data->niveis[cenario].limitesCenario(data->instancias[instancia]);
+}
+
+void mudarPadraoCamera(int idCamera, TIPO_CAMERA padrao){
+    Dados *data = Dados::getInstance();
+    data->niveis[idCamera].cam->mudarPadraoCamera(padrao);
 }

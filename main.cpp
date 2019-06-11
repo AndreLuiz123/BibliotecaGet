@@ -97,13 +97,12 @@ int main()
     //personagem.setFillColor(sf::Color::Red);
 
     //sf::View v(sf::FloatRect(300.f, 200.f, 300.f, 200.f));
-    criarCamera(0.f, 0.f, 300.f, 200.f,PADRAO_SALAS);
-    criarNivel("background.png",1000,900, 0);
-
+    criarCamera(0.f, 0.f, 300.f, 200.f, PADRAO_JOGADOR);
+    criarCenario("background.png",1000,900, 0);
     criarInstancia();
-   // criarInstancia();
+    criarInstancia();
     criarAnimacao("Pokemon.png",100,0);
-   // criarAnimacao("Pokemon.png",100,1);
+    criarAnimacao("spriteSheetCaveira.png",100,1);
 
     //inst.adicionaAnimacao(anim);
     //inst.sprite.setPosition(30,30);
@@ -201,47 +200,76 @@ int main()
            // inst.setOrientacao(90);
            colocarOrientacaoInstancia(0,90);
         }
-/*
+
         if(pressionarTecla(TECLA_Q))
         {
-            inst.setOrientacao(90);
-           //moverCamera(0,-0.5,0.0);
+           // inst.setOrientacao(90);
+           moverCamera(0,-0.5,0.0);
         }
         if(pressionarTecla(TECLA_E))
         {
-            inst.setOrientacao(90);
-           //moverCamera(0,0.5,0.0);
+           // inst.setOrientacao(90);
+           moverCamera(0,0.5,0.0);
         }
         if(pressionarTecla(TECLA_W))
         {
-            inst.setOrientacao(90);
-           //moverCamera(0,0.0,-0.5);
+           // inst.setOrientacao(90);
+           moverCamera(0,0.0,-0.5);
         }
         if(pressionarTecla(TECLA_R))
         {
-            inst.setOrientacao(90);
-           //moverCamera(0,0.0,0.5);
+           // inst.setOrientacao(90);
+           moverCamera(0,0.0,0.5);
         }
         if(pressionarTecla(TECLA_T))
         {
-            inst.setOrientacao(90);
-           //zoomCamera(0,0.97);
+           // inst.setOrientacao(90);
+           zoomCamera(0,0.97);
         }
         if(pressionarTecla(TECLA_Y))
         {
-            inst.setOrientacao(90);
-           //zoomCamera(0,1.01);
+           // inst.setOrientacao(90);
+           zoomCamera(0,1.01);
+        }
+        if(pressionarTecla(TECLA_P))
+        {
+           // inst.setOrientacao(90);
+           colocaTamanhoCamera(0, 2000, 2000);
         }
         if(pressionarTecla(TECLA_U))
         {
-            inst.setOrientacao(90);
-           //rotacionarCamera(0,-0.005);
+            //inst.setOrientacao(90);
+           rotacionarCamera(0,-0.005);
         }
         if(pressionarTecla(TECLA_I))
         {
-            inst.setOrientacao(90);
-           //colocarOrientacaoCamera(0,90);
-        }*/
+            //inst.setOrientacao(90);
+           colocarOrientacaoCamera(0,90);
+        }
+        if(pressionarTecla(TECLA_B))
+        {
+            //inst.setOrientacao(90);
+           mudarPadraoCamera(0, PADRAO_JOGADOR);
+        }
+        if(pressionarTecla(TECLA_X))
+        {
+            //inst.setOrientacao(90);
+           mudarPadraoCamera(0,PADRAO_SALAS);
+        }
+        if(pressionarTecla(TECLA_C))
+        {
+            //inst.setOrientacao(90);
+           mudarPadraoCamera(0,PADRAO_HORIZONTAL);
+        }
+        if(pressionarTecla(TECLA_V))
+        {
+            //inst.setOrientacao(90);
+           mudarPadraoCamera(0,PADRAO_VERTICAL);
+        }
+        if(limitesCenario(0,0)){
+            cout<<"LIMITES CENARIO"<<endl;
+        }
+       // cout<<limitesCenario(0,0)<<endl;
 
         //nv.padraoCameraHorizontal(0);
         //pressionarTecla(TECLA_A);

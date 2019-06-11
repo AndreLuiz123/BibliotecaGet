@@ -19,7 +19,6 @@ class Instancia
 
     public:
         sf::RectangleShape *teste;//
-
         Instancia();
         ~Instancia();
         std::vector<Animation> animacoes;

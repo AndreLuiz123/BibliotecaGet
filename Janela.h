@@ -26,7 +26,7 @@ public:
   //  void setUpdateCallback(void (*pointer)(void)) { updateCallback = pointer; } ///RECEBE COMO PARÂMETRO UMA FUNÇÃO E EXECUTA-A. É USADA NO LOOPING INFINITO DO JOGO
   //  void setInitCallback(void (*pointer)(void)) { initCallback = pointer; } ///RECEBE COMO PARÂMETRO UMA FUNÇÃO E EXECUTA-A. É USADA NA INICIALIZAÇÃO DO JOGO
     bool janelaAberta(); ///VERIFICA SE A JANELA ESTA OU NÃO ABERTA
-    void atualiza(Dados *data);
+    void atualiza(Dados *data,int nivelAtual);
     void abrir(); /// CRIA A JANELA DO JOGO
     void fechar(); ///FECHA A JANELA DO JOGO
     void setAltura(int alt);

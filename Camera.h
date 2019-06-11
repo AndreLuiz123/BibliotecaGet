@@ -29,7 +29,8 @@ public:
     void rotacionaCamera(float angulo);
     void setOrientacao(float angulo);
     void zoom(float z);
-    void colocaDistancia(float x, float y);
+    void colocaTamanhoCamera(float x, float y);
+    void mudarPadraoCamera(TIPO_CAMERA padrao);
 };
 
 

@@ -10,15 +10,16 @@ class Level{
 private:
     float width, height;
 public:
-    Camera cam;
+    Camera *cam;
     sf::Sprite background;
-    Level(std::string fileBackground, float largura, float altura, Camera camera);
+    Level(std::string fileBackground, float largura, float altura, Camera *camera);
     TIPO_CAMERA padraoCamera();
     void padraoCameraJogador(Instancia inst);
     void padraoCameraHorizontal(Instancia inst);
     void padraoCameraVertical(Instancia inst);
     void padraoCameraSalas(Instancia insto);
     void definirPosicaoInicialCamera(float x, float y);
+    bool limitesCenario(Instancia inst);
 };
 
 #endif // LEVEL_H_INCLUDED

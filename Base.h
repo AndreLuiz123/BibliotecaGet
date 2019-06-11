@@ -18,8 +18,12 @@ using namespace std;
 ///POR VIA DAS DÚVIDAS, A DESCRIÇÃO DAS FUNÇÕES DOS OUTROS TAD FORAM COPIADAS PARA SUAS CORRESPONDENTES NESTE TAD.
 void inicializar(int altura=600, int largura=800);/// CRIA A JANELA DO JOGO
 bool janelaAberta();///VERIFICA SE A JANELA ESTA OU NÃO ABERTA
-void atualiza();
-void rodar();/// FAZ A JANELA RODAR O JOGO. PARA ISTO, ESTA FUNÇÃO UTILIZA TODAS AS OUTRAS FUNÇÕES DO TAD "Janela.h"
+void atualiza(int nivelAtual=0);
+
+/// @brief rodar
+void rodar();
+
+/// FAZ A JANELA RODAR O JOGO. PARA ISTO, ESTA FUNÇÃO UTILIZA TODAS AS OUTRAS FUNÇÕES DO TAD "Janela.h"
 int criarSprite(string file);///CRIA UM SPRITE A PARTIR DE UM ARQUIVO INSERIDO NO PARÂMETRO E INSERE-O NA SPRITELIST
 int criarSpriteSheet(string file, int divX, int divY);///CRIA SPRITES QUE, EM SEQUÊNCIA, FORMAM UMA ANIMAÇÃO, E INSERE-OS NA SPRITELIST. ESTA FUNÇÃO SÓ FUNCIONA COM SPRITESHEETS REGULARES
 int criarSpriteSheetIrregular(string file);///CRIA SPRITES QUE, EM SEQUÊNCIA, FORMAM UMA ANIMAÇÃO, E INSERE-OS NA SPRITELIST. ESTA FUNÇÃO FUNCIONA COM QUALQUER SPRITESHEET COM FUNDO TRANSPARENTE, MAS É MAIS PESADA
@@ -47,7 +51,7 @@ bool verificaMousePressionado(int botaoMouse);
 bool pressionarBotaoMouse(int botaoMouse);
 bool verificaPosicaoMouseEmIntervalo(int x1, int x2, int y1, int y2);
 sf::Vector2i retornaPosicaoMouse();
-void criarNivel(std::string fileBackground, float largura, float altura, int cam);
+void criarCenario(std::string fileBackground, float largura, float altura, int cam);
 void criarCamera(float x, float y, float width, float height, TIPO_CAMERA tipoCamera=PADRAO_JOGADOR);
 void apagarCamera(int id);
 void moverCamera(int idCamera, float dx, float dy);
@@ -55,6 +59,7 @@ void colocarCameraPosicao(int idCamera, float x, float y);
 void rotacionarCamera(int idCamera, float angulo);
 void colocarOrientacaoCamera(int idCamera, float angulo);
 void zoomCamera(int idCamera, float aproximacao);
+void colocaTamanhoCamera(int idCamera, float x, float y);
 void criarInstancia();
 void apagarInstancia(int id);
 void criarAnimacao(string arquivoAnimacao, float deltaTime, int idInstancia);
@@ -68,5 +73,7 @@ void colocarOrientacaoInstancia(int idInstancia, float angulo);
 void colocarEscalaInstancia(int idInstancia, float escala);
 void virarSpriteXInstancia(int idInstancia);
 void virarSpriteYInstancia(int idInstancia);
+bool limitesCenario(int cenario, int instancia);
+void mudarPadraoCamera(int idCamera, TIPO_CAMERA padrao);
 
 #endif // BASE_H_INCLUDED
