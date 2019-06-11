@@ -20,7 +20,6 @@ private:
     int largura = 800;
     Janela(){}
 
-
 public:
     static Janela* getInstance();
     sf::RenderWindow window; /// DESENHA A JANELA

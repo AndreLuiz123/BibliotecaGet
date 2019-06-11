@@ -84,25 +84,30 @@ int main()
     rodar();*/
 
     inicializar();
-   // sf::RenderWindow window(sf::VideoMode(512,512), "SFML PROJECT", sf::Style::Close | sf::Style::Resize);
+    //sf::RenderWindow window(sf::VideoMode(512,512), "SFML PROJECT", sf::Style::Close | sf::Style::Resize);
 
-  //  Animation anim(0,100);
-  //  anim.criarAnimacaoDeArquivoIrregular("Pokemon.png");
+    //Animation anim(0,100);
+    //anim.criarAnimacaoDeArquivoIrregular("Pokemon.png");
 
-    Instancia inst;
+    //Instancia inst;
+
+    //Level nv("background.png",1000,900, PADRAO_HORIZONTAL);
 
     //sf::RectangleShape personagem(sf::Vector2f(30,30));
     //personagem.setFillColor(sf::Color::Red);
 
+    //sf::View v(sf::FloatRect(300.f, 200.f, 300.f, 200.f));
+    criarCamera(0.f, 0.f, 300.f, 200.f,PADRAO_SALAS);
+    criarNivel("background.png",1000,900, 0);
+
     criarInstancia();
-    //criarInstancia();
+   // criarInstancia();
     criarAnimacao("Pokemon.png",100,0);
+   // criarAnimacao("Pokemon.png",100,1);
 
-    //criarAnimacao("Pokemon.png",100,1);
-
-   // inst.adicionaAnimacao(anim);
-   // inst.sprite.setPosition(30,30);
-    while(janelaAberta())
+    //inst.adicionaAnimacao(anim);
+    //inst.sprite.setPosition(30,30);
+    while(/*window.isOpen()*//**/janelaAberta()/**/)
     {
 
         /*sf::Event event;
@@ -117,6 +122,7 @@ int main()
         }
         }*/
 
+
         if(verificaPosicaoMouseEmIntervalo(500,700,0,1000))
             cout<<"TESTE0"<<endl;
 
@@ -126,14 +132,14 @@ int main()
         if(pressionarBotaoMouse(BOTAO_DIREITO)){
             cout<<"TESTE2"<<endl;
         }
-      /*  if(pressionarTecla(TECLA_A)){
+        /*if(pressionarTecla(TECLA_A)){
             cout<<"A";
         }*/
 
       //  window.setKeyRepeatEnabled(false);
       //  std::cout<<window.getKeyRepeatEnabled()<<std::endl;
 
-       // inst.rodarAnimacao(0,"Pokemon.png");
+        //inst.rodarAnimacao(0,"Pokemon.png");
 
         if(pressionarTecla(TECLA_A))
         {
@@ -142,30 +148,35 @@ int main()
         }
         if(pressionarTecla(TECLA_B))
         {
-           // inst.movePersonagem(2,2);
-           //inst.virarSpriteY();
+           //inst.movePersonagem(2,2);
+           // inst.virarSpriteY();
            virarSpriteYInstancia(0);
         }
         if(pressionarTecla(TECLA_DIREITA))
         {
-            moverInstancia(0, 0.05,0);
+            //v.move(0.5f,0.0);
+            //inst.movePersonagem(-0.03,0);
+            moverInstancia(0, 2.0,0);
         }
         if(pressionarTecla(TECLA_ESQUERDA))
         {
+            //v.move(-0.5f,0.0);
             //inst.movePersonagem(-0.03,0);
-            moverInstancia(0,-0.03,0);
+            moverInstancia(0,-2.0,0);
         }
         if(pressionarTecla(TECLA_CIMA))
         {
+            //v.move(0.0,-0.5f);
             //inst.movePersonagem(0,-0.03);
-            moverInstancia(0,0,-0.03);
+            moverInstancia(0,0,-2.0);
         }
         if(pressionarTecla(TECLA_BAIXO))
         {
+            //v.move(0.0,0.5f);
             //inst.movePersonagem(0,0.03);
-             moverInstancia(0,0,0.03);
+            moverInstancia(0,0,2.0);
         }
-        if(pressionarTecla(TECLA_S))
+        if(pressionarTecla(TECLA_Z))
         {
             //inst.movePara(50,50);
             colocarInstanciaPosicao(0,50,50);
@@ -182,19 +193,63 @@ int main()
         }
         if(pressionarTecla(TECLA_G))
         {
-            //inst.rotaciona(0.05);
-            rotacionarInstancia(0,0.05);
+           // inst.rotaciona(0.05);
+           rotacionarInstancia(0,0.05);
         }
         if(pressionarTecla(TECLA_H))
         {
-            //inst.setOrientacao(90);
-            colocarOrientacaoInstancia(0,90);
+           // inst.setOrientacao(90);
+           colocarOrientacaoInstancia(0,90);
         }
+/*
+        if(pressionarTecla(TECLA_Q))
+        {
+            inst.setOrientacao(90);
+           //moverCamera(0,-0.5,0.0);
+        }
+        if(pressionarTecla(TECLA_E))
+        {
+            inst.setOrientacao(90);
+           //moverCamera(0,0.5,0.0);
+        }
+        if(pressionarTecla(TECLA_W))
+        {
+            inst.setOrientacao(90);
+           //moverCamera(0,0.0,-0.5);
+        }
+        if(pressionarTecla(TECLA_R))
+        {
+            inst.setOrientacao(90);
+           //moverCamera(0,0.0,0.5);
+        }
+        if(pressionarTecla(TECLA_T))
+        {
+            inst.setOrientacao(90);
+           //zoomCamera(0,0.97);
+        }
+        if(pressionarTecla(TECLA_Y))
+        {
+            inst.setOrientacao(90);
+           //zoomCamera(0,1.01);
+        }
+        if(pressionarTecla(TECLA_U))
+        {
+            inst.setOrientacao(90);
+           //rotacionarCamera(0,-0.005);
+        }
+        if(pressionarTecla(TECLA_I))
+        {
+            inst.setOrientacao(90);
+           //colocarOrientacaoCamera(0,90);
+        }*/
 
+        //nv.padraoCameraHorizontal(0);
         //pressionarTecla(TECLA_A);
         // cout<<"."<<endl;
-         atualiza();
+        atualiza();
        /* window.clear();
+       // window.setView(v);
+        window.draw(nv.background);
         window.draw(inst.sprite);
         window.display();*/
 

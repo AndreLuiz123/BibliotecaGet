@@ -11,9 +11,10 @@ class Instancia
 
         float posX;
         float posY;
-        bool ativo, flipedX=false,flipedY=false, rotacionando=false;
+        bool ativo=true, flipedX=false,flipedY=false, rotacionando=false;
         int ordem, flpx=1, flpy=1;
         float anguloAtual;
+        float velX, velY;
        //sf::Vector2f
 
     public:
@@ -40,6 +41,8 @@ class Instancia
         void setOrientacao(float angulo);
         void atribuirTexturaPersonagem(std::string file);
         void rodarAnimacao(int id);
+        void setAtivo(bool atv);
+        bool getAtivo();
 };
 
 #endif // INSTANCIA_H_INCLUDED

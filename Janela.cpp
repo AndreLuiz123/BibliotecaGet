@@ -51,41 +51,69 @@ void Janela::atualiza(Dados *data)
         }
     }*/
     while(window.pollEvent(event))
+    {
+        if (event.type == sf::Event::Closed)
+            window.close();
+        if(event.type == sf::Event::KeyPressed)
         {
-            if (event.type == sf::Event::Closed)
-                window.close();
-            if(event.type == sf::Event::KeyPressed)
+            if(event.key.code == sf::Keyboard::Escape)
             {
-                if(event.key.code == sf::Keyboard::Escape)
-                {
-                    window.close();
-                }
+                window.close();
             }
         }
+    }
 
-        for(unsigned int i = 0; i < data->instancias.size(); i++)
-        {
+    for(unsigned int i = 0; i < data->instancias.size(); i++)
+    {
 //            for()
-               data->instancias[i].rodarAnimacao(0);
-        }
+        data->instancias[i].rodarAnimacao(0);
+    }
 
-       // cout<<data->instancias.size()<<endl;
-        window.clear();
-       // window.draw(data->background);
-        for(unsigned int i = 0; i < data->instancias.size(); i++)
-        {
-            //window.draw(data->spriteList[i]);
-            //cout<<i<<endl;
-            window.draw(data->instancias[i].sprite);
-        }
+    // cout<<data->instancias.size()<<endl;
+    if(data->niveis.size()>0)
+        if(data->niveis[0].cam.tipoCam!=PADRAO_ORIGINAL)
+            switch(data->niveis[0].cam.tipoCam)
+            {
+            case PADRAO_JOGADOR:
+                data->niveis[0].padraoCameraJogador(data->instancias[0]);
+                break;
+            case PADRAO_HORIZONTAL:
+                data->niveis[0].padraoCameraHorizontal(data->instancias[0]);
+                break;
+            case PADRAO_VERTICAL:
+                data->niveis[0].padraoCameraVertical(data->instancias[0]);
+                break;
+            case PADRAO_SALAS:
+                data->niveis[0].padraoCameraSalas(data->instancias[0]);
+                break;
+            }
+    //  data->niveis[0].padraoCameraVertical(data->instancias[0]);
+    window.clear();
+    ///window.setView(data->cameras[0].camera);
+    if(data->niveis.size()>0)
+    {
+        window.setView(data->niveis[0].cam.camera);
+        // window.draw(data->background);
+        window.draw(data->niveis[0].background);
+    }
 
-        window.display();
+    for(unsigned int i = 0; i < data->instancias.size(); i++)
+    {
+        //window.draw(data->spriteList[i]);
+        //cout<<i<<endl;
+        if(data->instancias[i].getAtivo())
+        window.draw(data->instancias[i].sprite);
+    }
+
+    window.display();
 }
 
-void Janela::setAltura(int alt){
+void Janela::setAltura(int alt)
+{
     altura = alt;
 }
-void Janela::setLargura(int larg){
+void Janela::setLargura(int larg)
+{
     largura = larg;
 }
 

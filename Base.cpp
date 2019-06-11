@@ -10,6 +10,7 @@
 #include "Animacao.h"
 #include "GerenciadorInput.h"
 #include "Instancia.h"
+#include "Level.h"
 using namespace std;
 
 GerenciadorInput gerInp;
@@ -235,6 +236,42 @@ bool verificaPosicaoMouseEmIntervalo(int x1, int x2, int y1, int y2){
 sf::Vector2i retornaPosicaoMouse(){
     GerenciadorInput *gerInp = GerenciadorInput::getInstance();
     gerInp->retornaPosicaoMouse();
+}
+
+void criarNivel(std::string fileBackground, float largura, float altura, int cam){
+    Dados *data = Dados::getInstance();
+    Level lv(fileBackground, largura, altura, data->cameras[cam]);
+    data->niveis.push_back(lv);
+}
+
+void criarCamera(float x, float y, float width, float height, TIPO_CAMERA tipoCamera){
+    Camera cam(x,y,width,height, tipoCamera);
+    Dados *data = Dados::getInstance();
+    data->recebeCamera(cam);
+}
+void apagarCamera(int id){
+    Dados *data = Dados::getInstance();
+    data->apagarCamera(id);
+}
+void moverCamera(int idCamera, float dx, float dy){
+    Dados *data = Dados::getInstance();
+    data->cameras[idCamera].moveCamera(dx, dy);
+}
+void colocarCameraPosicao(int idCamera, float x, float y){
+    Dados *data = Dados::getInstance();
+    data->cameras[idCamera].movePara(x,y);
+}
+void rotacionarCamera(int idCamera, float angulo){
+    Dados *data = Dados::getInstance();
+    data->cameras[idCamera].rotacionaCamera(angulo);
+}
+void colocarOrientacaoCamera(int idCamera, float angulo){
+    Dados *data = Dados::getInstance();
+    data->cameras[idCamera].setOrientacao(angulo);
+}
+void zoomCamera(int idCamera, float aproximacao){
+    Dados *data = Dados::getInstance();
+    data->cameras[idCamera].zoom(aproximacao);
 }
 void criarInstancia(){
     Dados *data = Dados::getInstance();

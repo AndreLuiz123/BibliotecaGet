@@ -113,15 +113,22 @@ void Instancia::rodarAnimacao(int id)
 
     //arq = ;
 
-   /*sprite.setTextureRect(sf::IntRect(animacoes[id].rodarAnimacaoDeArquivoRegular(animacoes[id].arquivoDaAnimacao).x,
+   /**/sprite.setTextureRect(sf::IntRect(animacoes[id].rodarAnimacaoDeArquivoRegular(animacoes[id].arquivoDaAnimacao).x,
                                                animacoes[id].rodarAnimacaoDeArquivoRegular(animacoes[id].arquivoDaAnimacao).y,
                                                animacoes[id].rodarAnimacaoDeArquivoRegular(animacoes[id].arquivoDaAnimacao).dx,
-                                               animacoes[id].rodarAnimacaoDeArquivoRegular(animacoes[id].arquivoDaAnimacao).dy));(/
-    */sprite.setTextureRect(sf::IntRect(animacoes[id].frames[N].x,
+                                               animacoes[id].rodarAnimacaoDeArquivoRegular(animacoes[id].arquivoDaAnimacao).dy));
+    /**//*sprite.setTextureRect(sf::IntRect(animacoes[id].frames[N].x,
                                       animacoes[id].frames[N].y,
                                       animacoes[id].frames[N].dx,
-                                      animacoes[id].frames[N].dy));
+                                      animacoes[id].frames[N].dy));*/
      sprite.setOrigin(sprite.getTextureRect().width/2,sprite.getTextureRect().height/2);
     //std::cout<<animacoes[id].rodarAnimacaoDeArquivoRegular(file).x<<std::endl;
+}
+
+void Instancia::setAtivo(bool atv){
+    ativo = atv;
+}
+bool Instancia::getAtivo(){
+    return ativo;
 }
 

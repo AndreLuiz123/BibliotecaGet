@@ -6,6 +6,8 @@
 #include <vector>
 #include "GerenciadorInput.h"
 #include "Instancia.h"
+#include "Camera.h"
+#include "Level.h"
 
 ///A "Base.h" SERVE PARA A CHAMADA DAS FUNÇÕES DOS OUTROS TAD SEM QUE SEJA NECESSÁRIO A CRIAÇÃO DE UM OBJETO PRA ISSO
 
@@ -45,6 +47,14 @@ bool verificaMousePressionado(int botaoMouse);
 bool pressionarBotaoMouse(int botaoMouse);
 bool verificaPosicaoMouseEmIntervalo(int x1, int x2, int y1, int y2);
 sf::Vector2i retornaPosicaoMouse();
+void criarNivel(std::string fileBackground, float largura, float altura, int cam);
+void criarCamera(float x, float y, float width, float height, TIPO_CAMERA tipoCamera=PADRAO_JOGADOR);
+void apagarCamera(int id);
+void moverCamera(int idCamera, float dx, float dy);
+void colocarCameraPosicao(int idCamera, float x, float y);
+void rotacionarCamera(int idCamera, float angulo);
+void colocarOrientacaoCamera(int idCamera, float angulo);
+void zoomCamera(int idCamera, float aproximacao);
 void criarInstancia();
 void apagarInstancia(int id);
 void criarAnimacao(string arquivoAnimacao, float deltaTime, int idInstancia);

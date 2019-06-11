@@ -64,6 +64,14 @@ void Dados::apagarAnimacao(int id)
 {
     animacoes.erase(animacoes.begin()+5);
 }
+void Dados::recebeCamera(Camera camera)
+{
+    cameras.push_back(camera);
+}
+void Dados::apagarCamera(int id)
+{
+    cameras.erase(cameras.begin()+5);
+}
 bool Dados::analisaColisaoInstancias(int id1,int id2)
 {
     return instancias[id1].sprite.getTextureRect().intersects(instancias[id2].sprite.getTextureRect());

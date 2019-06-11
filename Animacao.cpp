@@ -251,7 +251,7 @@ AnimationFrame Animation::squareGrowing(int pixelX, int pixelY, int pixelDX, int
         }
     }
 
-    std::cout<<pixelX<<std::endl;
+    //std::cout<<pixelX<<std::endl;
 
     newFrame.x  = pixelX;
     newFrame.y  = pixelY;

@@ -6,6 +6,8 @@
 #include <string.h>
 #include "Animacao.h"
 #include "Instancia.h"
+#include "Level.h"
+#include "Camera.h"
 using namespace std;
 
 /// O "Dados.h" SERVE PARA GERENCIAR DADOS COMO SPRITES, BACKGROUNDS, AUDIOS, ETC...
@@ -27,12 +29,16 @@ public:
 
     vector<Instancia> instancias;
     vector<Animation> animacoes; ///GUARDA ANIMAÇÕES APLICADAS AOS ELEMENTOS DA RECTLIST
+    vector<Level> niveis;
+    vector<Camera> cameras;
     static Dados* getInstance(); ///PERMITE A CRIAÇÃO DE UM OBJETO "DADOS" QUE, POR SUA VEZ, PODE SER USADO NA BASE
 
     void recebeInstancia(Instancia inst);
     void apagarInstancia(int id);
     void recebeAnimacao(Animation anim);
     void apagarAnimacao(int id);
+    void recebeCamera(Camera camera);
+    void apagarCamera(int id);
     bool analisaColisaoPontoEspecificoInstancias(int id1, int id2);
     bool analisaColisaoInstancias(int id1,int id2);
 

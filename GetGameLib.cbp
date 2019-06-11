@@ -46,6 +46,8 @@
 		<Unit filename="Animacao.h" />
 		<Unit filename="Base.cpp" />
 		<Unit filename="Base.h" />
+		<Unit filename="Camera.cpp" />
+		<Unit filename="Camera.h" />
 		<Unit filename="Dados.cpp" />
 		<Unit filename="Dados.h" />
 		<Unit filename="Dados2.cpp" />
@@ -58,6 +60,8 @@
 		<Unit filename="Instancia.h" />
 		<Unit filename="Janela.cpp" />
 		<Unit filename="Janela.h" />
+		<Unit filename="Level.cpp" />
+		<Unit filename="Level.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
