@@ -118,7 +118,8 @@ void atualiza(int nivelAtual)
 {
     Janela *janela = Janela::getInstance();
     Dados *data = Dados::getInstance();
-    janela->atualiza(data, nivelAtual);
+    GerenciadorInput *gerInp = GerenciadorInput::getInstance();
+    janela->atualiza(data, nivelAtual, gerInp->justPressedKeys);
 }
 
 bool verificaTeclaPressionada(int id)
@@ -198,6 +199,13 @@ void rodarAnimacao(string file, int id){
     Janela *janela = Janela::getInstance();
     janela->setInitCallback(pointer);
 }*/
+void instanciaUsaAnimacao(int instanciaId, int animacaoId)
+{
+    Dados *data = Dados::getInstance();
+    data->instancias[instanciaId].animacaoAtual = animacaoId;
+
+}
+
 void animationRun(int primeiroSprite, int tamanhoAnimacao)
 {
 
@@ -207,6 +215,20 @@ bool pressionarTecla(int tecla){
    /* janela->window.setKeyRepeatEnabled(false);*/
    GerenciadorInput *gerInp = GerenciadorInput::getInstance();
    return gerInp->teclaPressionada(tecla);
+}
+
+bool largarTecla(int tecla)
+{
+   GerenciadorInput *gerInp = GerenciadorInput::getInstance();
+   Janela *janela = Janela::getInstance();
+   return gerInp->teclaLargada(tecla,janela->event, janela->window);
+}
+
+bool pressionarTeclaUmaVez(int tecla)
+{
+   GerenciadorInput *gerInp = GerenciadorInput::getInstance();
+   Janela *janela = Janela::getInstance();
+   return gerInp->teclaJustPressed(tecla);
 }
 
 bool segurarTecla(int tecla){
@@ -277,10 +299,11 @@ void colocaTamanhoCamera(int idCamera, float x, float y){
     Dados *data = Dados::getInstance();
     data->cameras[idCamera].colocaTamanhoCamera(x,y);
 }
-void criarInstancia(){
+int criarInstancia(){
     Dados *data = Dados::getInstance();
     Instancia inst;
     data->recebeInstancia(inst);
+    return data->instancias.size()-1;
 }
 void apagarInstancia(int id){
     Dados *data = Dados::getInstance();
@@ -289,6 +312,10 @@ void apagarInstancia(int id){
 void moverInstancia(int idInstancia, float dx, float dy){
     Dados *data = Dados::getInstance();
     data->instancias[idInstancia].movePersonagem(dx, dy);
+}
+float retornaVelocidadeInstancia(int idInstancia){
+
+
 }
 void colocarInstanciaPosicao(int idInstancia, float x, float y){
     Dados *data = Dados::getInstance();
@@ -310,19 +337,54 @@ void virarSpriteXInstancia(int idInstancia){
     Dados *data = Dados::getInstance();
     data->instancias[idInstancia].virarSpriteX();
 }
+void virarSpriteXInstanciaDireita(int idInstancia){
+    Dados *data = Dados::getInstance();
+    data->instancias[idInstancia].virarSpriteXDireita();
+}
+void virarSpriteXInstanciaEsquerda(int idInstancia){
+    Dados *data = Dados::getInstance();
+    data->instancias[idInstancia].virarSpriteXEsquerda();
+}
 void virarSpriteYInstancia(int idInstancia){
     Dados *data = Dados::getInstance();
     data->instancias[idInstancia].virarSpriteY();
 }
+void virarSpriteYInstanciaCima(int idInstancia){
+    Dados *data = Dados::getInstance();
+    data->instancias[idInstancia].virarSpriteYCima();
+}
+void virarSpriteYInstanciaBaixo(int idInstancia){
+    Dados *data = Dados::getInstance();
+    data->instancias[idInstancia].virarSpriteYBaixo();
+}
 
-void criarAnimacao(string arquivoAnimacao, float deltaTime, int idInstancia){
+void criarAnimacao(float deltaTime, int idInstancia, string arquivoAnimacao){
     Dados *data = Dados::getInstance();
     Animation anim(0,deltaTime);
+    if(arquivoAnimacao!=" ")
+    {
     anim.criarAnimacaoDeArquivoIrregular(arquivoAnimacao);
+    std::cout<<anim.arquivoDaAnimacao<<" "<<anim.frames.size()<<std::endl;
+    }
+
     data->instancias[idInstancia].adicionaAnimacao(anim);
     data->instancias[idInstancia].setPosicao(30,30);
     //data->recebeAnimacao(anim);
 }
+
+void associarArquivoAnimacao(int instanciaId, int animacaoInstanciaId, std::string arquivoAnimacao)
+{
+    Dados *data = Dados::getInstance();
+    data->instancias[instanciaId].animacoes[animacaoInstanciaId].associarArquivoAnimacao(arquivoAnimacao);
+    data->instancias[instanciaId].adicionaAnimacaoDepois(animacaoInstanciaId);
+}
+
+void criarFrameAnimacaoManualmente(int instanciaId, int animacaoInstanciaId, float x, float y, float dx, float dy){
+    Dados *data = Dados::getInstance();
+    data->instancias[instanciaId].animacoes[animacaoInstanciaId].criarFrameManualmente(x,y,dx,dy);
+    //data->recebeAnimacao(anim);
+}
+
 void apagarAnimacao(int id){
     Dados *data = Dados::getInstance();
     data->apagarAnimacao(id);
@@ -345,4 +407,39 @@ bool limitesCenario(int cenario, int instancia){
 void mudarPadraoCamera(int idCamera, TIPO_CAMERA padrao){
     Dados *data = Dados::getInstance();
     data->niveis[idCamera].cam->mudarPadraoCamera(padrao);
+}
+
+float retornaPosicaoInstanciaX(int id){
+    Dados *data = Dados::getInstance();
+    return data->instancias[id].getPosX();
+}
+
+float retornaPosicaoInstanciaY(int id){
+    Dados *data = Dados::getInstance();
+    return data->instancias[id].getPosY();
+}
+
+float getVelocidadeXInstancia(int idInstancia){
+    Dados *data = Dados::getInstance();
+    return data->instancias[idInstancia].getVelocidadeX();
+}
+float getVelocidadeYInstancia(int idInstancia){
+    Dados *data = Dados::getInstance();
+    return data->instancias[idInstancia].getVelocidadeY();
+}
+float getWidthInstancia(int idInstancia){
+    Dados *data = Dados::getInstance();
+    return data->instancias[idInstancia].getWidth();
+}
+float getHeightInstancia(int idInstancia){
+    Dados *data = Dados::getInstance();
+    return data->instancias[idInstancia].getHeight();
+}
+void ativaInstancia(int idInstancia){
+    Dados *data = Dados::getInstance();
+    data->instancias[idInstancia].setAtivo(true);
+}
+void desativaInstancia(int idInstancia){
+    Dados *data = Dados::getInstance();
+    data->instancias[idInstancia].setAtivo(false);
 }

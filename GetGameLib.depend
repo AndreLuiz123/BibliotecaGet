@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1560262160 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\main.cpp
+1563564504 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\main.cpp
 	<iostream>
 	<stdlib.h>
 	<time.h>
@@ -11,7 +11,7 @@
 	"Animacao.h"
 	"Instancia.h"
 
-1560175340 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\dados.cpp
+1563391111 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\dados.cpp
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 	"Dados.h"
@@ -24,7 +24,7 @@
 	"Base.h"
 	"Animacao.h"
 
-1560175502 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\dados.h
+1563553899 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\dados.h
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 	<string.h>
@@ -40,7 +40,7 @@
 	<SFML/Graphics.hpp>
 	<string.h>
 
-1560261564 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\base.cpp
+1563467563 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\base.cpp
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 	<iostream>
@@ -55,7 +55,7 @@
 	"Instancia.h"
 	"Level.h"
 
-1560262018 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\base.h
+1563564913 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\base.h
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 	<string.h>
@@ -65,18 +65,19 @@
 	"Camera.h"
 	"Level.h"
 
-1560255171 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\janela.h
+1563386651 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\janela.h
 	<SFML/Window.hpp>
 	<string.h>
 	"Dados.h"
 
-1560255129 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\janela.cpp
+1563553628 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\janela.cpp
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 	<iostream>
 	<string.h>
 	"Janela.h"
 	"Dados.h"
+	"Base.h"
 
 1550596978 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\dados2.cpp
 	<SFML/Window.hpp>
@@ -94,7 +95,7 @@
 	<SFML/Graphics.hpp>
 	<string.h>
 
-1560227651 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\animacao.cpp
+1563552745 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\animacao.cpp
 	<SFML/Graphics.hpp>
 	<windows.h>
 	<iostream>
@@ -105,7 +106,7 @@
 	<stack>
 	<algorithm>
 
-1559942949 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\animacao.h
+1561675656 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\animacao.h
 	<SFML/Graphics.hpp>
 	<windows.h>
 	<iostream>
@@ -114,21 +115,22 @@
 	<string.h>
 	<vector>
 	<string>
+	"andewSay.h"
 
-1559668526 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\gerenciadorinput.cpp
+1563387489 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\gerenciadorinput.cpp
 	<iostream>
 	"GerenciadorInput.h"
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 
-1559668526 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\gerenciadorinput.h
+1563387489 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\gerenciadorinput.h
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 
-1560224653 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\instancia.cpp
+1563468240 source:c:\users\andre luiz\desktop\sfml-projetos\getgamelib\instancia.cpp
 	"Instancia.h"
 
-1560254275 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\instancia.h
+1563463633 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\instancia.h
 	<vector>
 	<string>
 	"Animacao.h"
@@ -149,7 +151,7 @@
 	<time.h>
 	<string.h>
 
-1560260677 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\camera.h
+1560360038 c:\users\andre luiz\desktop\sfml-projetos\getgamelib\camera.h
 	<SFML/Window.hpp>
 	<SFML/Graphics.hpp>
 

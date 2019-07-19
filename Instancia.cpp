@@ -12,10 +12,10 @@ Instancia::~Instancia()
 }
 
 float Instancia::getPosX(){
-    return posX;
+    return sprite.getPosition().x;
 }
 float Instancia::getPosY(){
-    return posY;
+    return sprite.getPosition().y;
 }
 void Instancia::setPosX(float posiX){
     posX = posiX;
@@ -28,11 +28,22 @@ void Instancia::adicionaAnimacao(Animation anim)
 {
     animacoes.push_back(anim);
     // teste->setTexture(anim.arquivoDaAnimacao);
+    if(anim.arquivoDaAnimacao!=" ")
+    {
     sf::Texture *t = new sf::Texture();
     std::cout << "Created " << t << std::endl;
     t->loadFromFile(anim.arquivoDaAnimacao);
     sprite.setTexture(*t);
+    }
+}
 
+void Instancia::adicionaAnimacaoDepois(int anim)
+{
+    // teste->setTexture(anim.arquivoDaAnimacao);
+    sf::Texture *t = new sf::Texture();
+    std::cout << "Created " << t << std::endl;
+    t->loadFromFile(animacoes[anim].arquivoDaAnimacao);
+    sprite.setTexture(*t);
 }
 
 void Instancia::movePara(int x, int y)
@@ -46,6 +57,8 @@ void Instancia::movePersonagem(float dx, float dy)
     //setPosicao(posX + dx, posY + dy);
     sprite.move(dx,dy);
     sprite.move(dx,dy);
+    velX = dx;
+    velY = dy;
 }
 
 void Instancia::setPosicao(int x, int y)
@@ -55,7 +68,7 @@ void Instancia::setPosicao(int x, int y)
     sprite.setPosition(x,y);
 }
 
-void Instancia::setEscala(int escala)
+void Instancia::setEscala(float escala)
 {
 
     if(escala<0)
@@ -80,7 +93,6 @@ void Instancia::setEscala(int escala)
     }
 
     sprite.setScale(flpx,flpy);
-
 }
 
 void Instancia::virarSpriteX()
@@ -88,11 +100,37 @@ void Instancia::virarSpriteX()
     flpx *= -1;
     sprite.setScale(flpx,flpy);
 }
+
+void Instancia::virarSpriteXDireita()
+{
+    flpx = 1;
+    sprite.setScale(flpx,flpy);
+}
+
+void Instancia::virarSpriteXEsquerda()
+{
+    flpx = -1;
+    sprite.setScale(flpx,flpy);
+}
+
 void Instancia::virarSpriteY()
 {
     flpy *= -1;
     sprite.setScale(flpx,flpy);
 }
+
+void Instancia::virarSpriteYCima()
+{
+    flpy = 1;
+    sprite.setScale(flpx,flpy);
+}
+
+void Instancia::virarSpriteYBaixo()
+{
+    flpy = -1;
+    sprite.setScale(flpx,flpy);
+}
+
 float Instancia::area()
 {
     return sprite.getScale().x*sprite.getScale().y;
@@ -108,11 +146,12 @@ void Instancia::setOrientacao(float angulo)
 }
 void Instancia::rodarAnimacao(int id)
 {
-    int N = 0;
     //std::string arq;
 
     //arq = ;
+    animacaoAtual = id;
 
+    //std::cout<<animacoes[id].arquivoDaAnimacao<<std::endl;
    /**/sprite.setTextureRect(sf::IntRect(animacoes[id].rodarAnimacaoDeArquivoRegular(animacoes[id].arquivoDaAnimacao).x,
                                                animacoes[id].rodarAnimacaoDeArquivoRegular(animacoes[id].arquivoDaAnimacao).y,
                                                animacoes[id].rodarAnimacaoDeArquivoRegular(animacoes[id].arquivoDaAnimacao).dx,
@@ -130,5 +169,17 @@ void Instancia::setAtivo(bool atv){
 }
 bool Instancia::getAtivo(){
     return ativo;
+}
+float Instancia::getVelocidadeX(){
+    return velX;
+}
+float Instancia::getVelocidadeY(){
+    return velY;
+}
+float Instancia::getWidth(){
+    return sprite.getTextureRect().width*flpx;
+}
+float Instancia::getHeight(){
+    return sprite.getTextureRect().height*flpy;
 }
 

@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <windows.h>
 #include <iostream>
-#include<stdlib.h>
+#include <stdlib.h>
 #include <time.h>
 #include <string.h>
 #include "Animacao.h"
@@ -266,16 +266,23 @@ AnimationFrame Animation::rodarAnimacaoDeArquivoRegular(std::string file){
 
     //criarAnimacaoDeArquivoRegular(file,divX,divY);
 
-    if(frameId==frames.size())
+    /*if(frames.size()>1)
+    {*/
+
+        if(clock() - timer > deltaTime)
+        {
+            timer=clock();
+            frameId++;
+        }
+
+        if(frameId>=frames.size())
+        {
+            frameId=0;
+        }
+    /*}else
     {
         frameId=0;
-    }
-
-    if(clock() - timer > deltaTime)
-    {
-        timer=clock();
-        frameId++;
-    }
+    }*/
 
     return frames[frameId];
 
@@ -305,6 +312,25 @@ void Animation::criarAnimacaoComParteDeArquivo(std::string file, int divX, int d
 
 
 }
+
+void Animation::criarFrameManualmente(int x, int y, int dx, int dy){
+    AnimationFrame frame;
+
+    frame.x = x;
+    frame.y = y;
+    frame.dx = dx;
+    frame.dy = dy;
+
+    frames.push_back(frame);
+}
+
+void Animation::associarArquivoAnimacao(std::string arquivo){
+    sf::Texture *tex = new sf::Texture();
+    std::cout << "ALO ALO " << tex << std::endl;
+    tex->loadFromFile(arquivo);
+    arquivoDaAnimacao = arquivo;
+}
+
 
 Animation::~Animation()
 {

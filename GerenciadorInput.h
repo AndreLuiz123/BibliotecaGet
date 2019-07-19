@@ -140,6 +140,9 @@ private:
 
 public:
 
+    bool justPressedKeys[86];
+    bool releasedKeys[86];
+
     GerenciadorInput();
     static GerenciadorInput* getInstance();
     bool teclaPressionada(int tecla);
@@ -147,6 +150,9 @@ public:
     bool mousePressionado(int botaoMouse);
     bool intervaloPosicaoMouse(int x1, int x2, int y1, int y2);
     sf::Vector2i retornaPosicaoMouse();
+    bool teclaLargada(int tecla, sf::Event event,sf::RenderWindow &window);
+    bool pressionarTeclaUmaVez(int tecla, sf::Event event, sf::RenderWindow &window);
+    bool teclaJustPressed(int tecla);
 
 };
 

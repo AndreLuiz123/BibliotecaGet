@@ -9,7 +9,7 @@
 #include <string.h>
 #include <vector>
 #include <string>
-
+#include "andewSay.h"
 struct AnimationFrame
 {
     int x, y;
@@ -46,6 +46,9 @@ public:
     void apagarFrame(int frame);
     static bool compara(AnimationFrame &a1, AnimationFrame &a2);
     static bool comparaY(AnimationFrame &a1, AnimationFrame &a2);
+    void definirFrameManualmente(int x, int y, int dx, int dy);
+    void criarFrameManualmente(int x, int y, int dx, int dy);
+    void associarArquivoAnimacao(std::string arquivo);
 
      ~Animation();
 };

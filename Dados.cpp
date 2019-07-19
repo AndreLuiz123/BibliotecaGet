@@ -74,7 +74,41 @@ void Dados::apagarCamera(int id)
 }
 bool Dados::analisaColisaoInstancias(int id1,int id2)
 {
-    return instancias[id1].sprite.getTextureRect().intersects(instancias[id2].sprite.getTextureRect());
+    if(
+    ((instancias[id1].sprite.getPosition().x + instancias[id1].flpx*instancias[id1].sprite.getTextureRect().width/2 < instancias[id2].sprite.getPosition().x + instancias[id2].flpx*instancias[id2].sprite.getTextureRect().width/2
+       && instancias[id1].sprite.getPosition().x + instancias[id1].flpx*instancias[id1].sprite.getTextureRect().width/2 > instancias[id2].sprite.getPosition().x - instancias[id2].flpx*instancias[id2].sprite.getTextureRect().width/2)
+       ||
+    (instancias[id1].sprite.getPosition().x - instancias[id1].flpx*instancias[id1].sprite.getTextureRect().width/2 < instancias[id2].sprite.getPosition().x + instancias[id2].flpx*instancias[id2].sprite.getTextureRect().width/2
+       && instancias[id1].sprite.getPosition().x - instancias[id1].flpx*instancias[id1].sprite.getTextureRect().width/2 > instancias[id2].sprite.getPosition().x - instancias[id2].flpx*instancias[id2].sprite.getTextureRect().width/2)
+       ||
+    (instancias[id2].sprite.getPosition().x + instancias[id2].flpx*instancias[id2].sprite.getTextureRect().width/2 < instancias[id1].sprite.getPosition().x + instancias[id1].flpx*instancias[id1].sprite.getTextureRect().width/2
+       && instancias[id2].sprite.getPosition().x + instancias[id2].flpx*instancias[id2].sprite.getTextureRect().width/2 > instancias[id1].sprite.getPosition().x - instancias[id1].flpx*instancias[id1].sprite.getTextureRect().width/2)
+       ||
+    (instancias[id2].sprite.getPosition().x - instancias[id2].flpx*instancias[id2].sprite.getTextureRect().width/2 < instancias[id1].sprite.getPosition().x + instancias[id1].flpx*instancias[id1].sprite.getTextureRect().width/2
+       && instancias[id2].sprite.getPosition().x - instancias[id2].flpx*instancias[id2].sprite.getTextureRect().width/2 > instancias[id1].sprite.getPosition().x - instancias[id1].flpx*instancias[id1].sprite.getTextureRect().width/2)
+    )
+       &&
+    (
+     (instancias[id1].sprite.getPosition().y + instancias[id1].flpy*instancias[id1].sprite.getTextureRect().height/2 < instancias[id2].sprite.getPosition().y + instancias[id2].flpy*instancias[id2].sprite.getTextureRect().height/2
+       && instancias[id1].sprite.getPosition().y + instancias[id1].flpy*instancias[id1].sprite.getTextureRect().height/2 > instancias[id2].sprite.getPosition().y - instancias[id2].flpy*instancias[id2].sprite.getTextureRect().height/2)
+        ||
+    (instancias[id1].sprite.getPosition().y - instancias[id1].flpy*instancias[id1].sprite.getTextureRect().height/2 < instancias[id2].sprite.getPosition().y + instancias[id2].flpy*instancias[id2].sprite.getTextureRect().height/2
+       && instancias[id1].sprite.getPosition().y - instancias[id1].flpy*instancias[id1].sprite.getTextureRect().height/2 > instancias[id2].sprite.getPosition().y - instancias[id2].flpy*instancias[id2].sprite.getTextureRect().height/2)
+        ||
+    (instancias[id2].sprite.getPosition().y + instancias[id2].flpy*instancias[id2].sprite.getTextureRect().height/2 < instancias[id1].sprite.getPosition().y + instancias[id1].flpy*instancias[id1].sprite.getTextureRect().height/2
+       && instancias[id2].sprite.getPosition().y + instancias[id2].flpy*instancias[id2].sprite.getTextureRect().height/2 > instancias[id1].sprite.getPosition().y - instancias[id1].flpy*instancias[id1].sprite.getTextureRect().height/2)
+        ||
+    (instancias[id2].sprite.getPosition().y - instancias[id2].flpy*instancias[id2].sprite.getTextureRect().height/2 < instancias[id1].sprite.getPosition().y + instancias[id1].flpy*instancias[id1].sprite.getTextureRect().height/2
+       && instancias[id2].sprite.getPosition().y - instancias[id2].flpy*instancias[id2].sprite.getTextureRect().height/2 > instancias[id1].sprite.getPosition().y - instancias[id1].flpy*instancias[id1].sprite.getTextureRect().height/2)
+    )
+    ){
+    //std::cout<<instancias[id2].sprite.getTextureRect().height<<" "<<instancias[id1].sprite.getTextureRect().height<<std::endl;
+    return true;
+    }
+
+
+       return false;
+   // return instancias[id1].sprite.getTextureRect().intersects(instancias[id2].sprite.getTextureRect());
 }
 
 
