@@ -3,11 +3,7 @@
 #include <time.h>
 #include <string.h>
 #include "Base.h"
-#include "Dados.h"
-#include "Janela.h"
-#include "GerenciadorInput.h"
-#include "Animacao.h"
-#include "Instancia.h"
+
 
 using namespace std;
 
@@ -19,17 +15,22 @@ int main()
     criarCamera(30,30,500,500,PADRAO_JOGADOR);
     criarCenario("background.png", 900, 500, 0);
 
-    clock_t relogio = 0;
+    //criarCamera(30,30,500,500,PADRAO_JOGADOR);
+    criarCenario("back2.png", 900, 500, 0);
+
+
+    int nv = 0;
 
     int caveira = criarInstancia();
     criarAnimacao(100,caveira);
     criarAnimacao(100,caveira);
     criarAnimacao(100,caveira);
 
-    associarArquivoAnimacao(0,0,"spriteSheetCaveira.png");
+    associarArquivoAnimacao(caveira,0,"spriteSheetCaveira.png");
 
    ///Caveira parada
     criarFrameAnimacaoManualmente(caveira,0,17,75,30,52);
+
 
    ///Caveira andando
     criarFrameAnimacaoManualmente(caveira,1,17,75,30,52);
@@ -37,7 +38,10 @@ int main()
     criarFrameAnimacaoManualmente(caveira,1,17,75,30,52);
 
    ///Caveira pulando
-     criarFrameAnimacaoManualmente(caveira,2,82,75,30,52);
+    criarFramesAnimacaoAutomaticamente(caveira,2,"spriteSheetCaveira.png");
+    //criarFrameAnimacaoManualmente(caveira,2,82,75,30,52);
+
+
 
     int chao[1000];
     bool virar = false;
@@ -46,15 +50,17 @@ int main()
     bool andaEsquerda = true;
     float vel = 0;
     float ultimaVel;
-    float ac = 0.001;
+    float ac = 0.01;
     int quadrados = 50;
     ///corrigir a velocidade do frame rate
     for(int i = 0; i<quadrados; i++)
     {
         chao[i] = criarInstancia();
         criarAnimacao(100,chao[i],"chao.png");
+        //associarArquivoAnimacao(chao[i],0,"chao.png");
+        //criarFramesAnimacaoAutomaticamente(chao[i],0,"chao.png");
         colocarEscalaInstancia(chao[i], 0.2);
-        ///Criar funÁ„o que retorna escala
+        ///Criar fun√ß√£o que retorna escala
         colocarInstanciaPosicao(chao[i],getWidthInstancia(chao[i])*i,480);
     }
 
@@ -63,7 +69,7 @@ int main()
         chao[i] = criarInstancia();
         criarAnimacao(100,chao[i],"chao.png");
         colocarEscalaInstancia(chao[i], 0.2);
-        ///Criar funÁ„o que retorna escala
+        ///Criar fun√ß√£o que retorna escala
         colocarInstanciaPosicao(chao[i],getWidthInstancia(chao[i])*(i-42),480-getHeightInstancia(chao[i]));
     }
     for(int i = 53; i<55; i++)
@@ -85,102 +91,116 @@ int main()
         colocarInstanciaPosicao(moedas[i], getWidthInstancia(chao[0])*i,480-getHeightInstancia(chao[0]));
     }
 
+    //virarSpriteXInstancia(caveira);
 
-   // virarSpriteXInstancia(caveira);
-
-
+    //clock_t deltaTime = 1;
+    //float fps = 1/60.0;
+    //clock_t timer = 0;
 
     while(janelaAberta())
     {
-     instanciaUsaAnimacao(caveira, 0);
-       if(andaDireita)
-       {
-        if(pressionarTeclaUmaVez(TECLA_DIREITA))
-        {
-            /*std::cout<<ultimaVel<<" deve ser menor que 0"<<std::endl;
-            if(ultimaVel<0)
-            virarSpriteXInstancia(caveira);*/
-            virarSpriteXInstanciaEsquerda(caveira);
-        }
+      //  timer += clock();
+       //     timer -= fps;
+         instanciaUsaAnimacao(caveira, 0);
+           if(andaDireita)
+           {
+            if(pressionarTeclaUmaVez(TECLA_DIREITA))
+            {
+                /*std::cout<<ultimaVel<<" deve ser menor que 0"<<std::endl;
+                if(ultimaVel<0)
+                virarSpriteXInstancia(caveira);*/
+                virarSpriteXInstanciaEsquerda(caveira);
+            }
 
-        if(pressionarTecla(TECLA_DIREITA))
-        {
-            instanciaUsaAnimacao(caveira,1);
-            moverInstancia(caveira,0.05,0);
-            ultimaVel = 0.05;
-        }
+            if(pressionarTecla(TECLA_DIREITA))
+            {
+                instanciaUsaAnimacao(caveira,1);
+                moverInstancia(caveira,0.5,0);
+                ultimaVel = 0.05;
+            }
 
-       }
+           }
 
-       if(andaEsquerda)
-       {
-        if(pressionarTeclaUmaVez(TECLA_ESQUERDA))
-        {
-            instanciaUsaAnimacao(caveira,1);
-            /*std::cout<<ultimaVel<<" deve ser maior que 0"<<std::endl;
-            if(ultimaVel>0)
-            virarSpriteXInstancia(caveira);*/
-            virarSpriteXInstanciaDireita(caveira);///Neste exemplo a tecla esquerda faz ir pra direita e vice-versa pq o sprite È "problem·tico", e n„o a funÁ„o
-        }
-
-
-        if(pressionarTecla(TECLA_ESQUERDA))
-        {
-            instanciaUsaAnimacao(caveira,1);
-            moverInstancia(caveira,-0.05,0);
-            ultimaVel = -0.05;
-        }
-
-       }
+           if(andaEsquerda)
+           {
+            if(pressionarTeclaUmaVez(TECLA_ESQUERDA))
+            {
+                instanciaUsaAnimacao(caveira,1);
+                /*std::cout<<ultimaVel<<" deve ser maior que 0"<<std::endl;
+                if(ultimaVel>0)
+                virarSpriteXInstancia(caveira);*/
+                virarSpriteXInstanciaDireita(caveira);///Neste exemplo a tecla esquerda faz ir pra direita e vice-versa pq o sprite √© "problem√°tico", e n√£o a fun√ß√£o
+            }
 
 
-        if(!estaChao)
-        {
-            instanciaUsaAnimacao(caveira,2);
-            moverInstancia(caveira,0,vel);
-            vel+=ac;
-        }
+            if(pressionarTecla(TECLA_ESQUERDA))
+            {
+                instanciaUsaAnimacao(caveira,1);
+                moverInstancia(caveira,-0.5,0);
+                ultimaVel = -0.05;
+            }
 
-        estaChao = false;
-        andaDireita = true;
-        andaEsquerda = true;
-        for(int i = 0; i<55; i++)
-        {
-             if(analisaColisaoInstancias(caveira, chao[i]))
-             {
-                estaChao = true;
-
-                if(retornaPosicaoInstanciaY(caveira)<retornaPosicaoInstanciaY(chao[i])+getHeightInstancia(chao[i])&& retornaPosicaoInstanciaY(caveira)>retornaPosicaoInstanciaY(chao[i])-getHeightInstancia(chao[i]))
-                {
-                    if(retornaPosicaoInstanciaX(caveira)+getWidthInstancia(caveira)/2<=retornaPosicaoInstanciaX(chao[i])-getWidthInstancia(chao[i])/2)
-                        andaDireita = false;
-
-                    if(retornaPosicaoInstanciaX(caveira)+getWidthInstancia(caveira)/2>=retornaPosicaoInstanciaX(chao[i])+getWidthInstancia(chao[i])/2)
-                        andaEsquerda = false;
-                }
-
-             }
-        }
+           }
 
 
+            if(!estaChao)
+            {
 
-        if(pressionarTeclaUmaVez(TECLA_ESPACO) && estaChao)
-        {
+                instanciaUsaAnimacao(caveira,2);
+                moverInstancia(caveira,0,vel);
+                vel+=ac;
+            }
+
             estaChao = false;
-            vel = - 0.4;
-        }
+            andaDireita = true;
+            andaEsquerda = true;
+            for(int i = 0; i<55; i++)
+            {
+                 if(analisaColisaoInstancias(caveira, chao[i]))
+                 {
+                    estaChao = true;
 
-        for(int i = 0; i<30; i++)
-        if(analisaColisaoInstancias(caveira, moedas[i]))
-        {
-         desativaInstancia(moedas[i]);
-        }
+                    if(retornaPosicaoInstanciaY(caveira)<retornaPosicaoInstanciaY(chao[i])+getHeightInstancia(chao[i])&& retornaPosicaoInstanciaY(caveira)>retornaPosicaoInstanciaY(chao[i])-getHeightInstancia(chao[i]))
+                    {
+                        if(retornaPosicaoInstanciaX(caveira)+getWidthInstancia(caveira)/2<=retornaPosicaoInstanciaX(chao[i])-getWidthInstancia(chao[i])/2)
+                            andaDireita = false;
+
+                        if(retornaPosicaoInstanciaX(caveira)+getWidthInstancia(caveira)/2>=retornaPosicaoInstanciaX(chao[i])+getWidthInstancia(chao[i])/2)
+                            andaEsquerda = false;
+                    }
+
+                 }
+            }
 
 
-        atualiza();
+
+            if(pressionarTeclaUmaVez(TECLA_ESPACO) && estaChao)
+            {
+                estaChao = false;
+                vel = - 1;
+            }
+
+
+            for(int i = 0; i<30; i++)
+            if(analisaColisaoInstancias(caveira, moedas[i]))
+            {
+             desativaInstancia(moedas[i]);
+            }
+
+            if(retornaPosicaoInstanciaX(caveira)>500)
+            {
+                colocarInstanciaPosicao(caveira,0,0);
+                colocarCameraPosicao(0,30,30);
+                nv++;
+            }
+
+
+            atualiza(nv);
 
 
     }
+
+
 
     return 0;
 }

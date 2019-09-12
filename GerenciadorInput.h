@@ -143,15 +143,32 @@ public:
     bool justPressedKeys[86];
     bool releasedKeys[86];
 
+    ///Construtor
     GerenciadorInput();
+    ///Não deve ser usada pelo desenvolvedor. O objetivo deste método é garantir que a GETGameLib só use um Gerenciador de Inputs em sua aplicação
     static GerenciadorInput* getInstance();
+    /// Verifica se a tecla passada no parâmetro está sendo pressionada ou não
+    ///@param tecla  tecla a ser analisada
     bool teclaPressionada(int tecla);
-    bool teclaSolta(int tecla);
+    /// Verifica se o botão do mouse passado no parâmetro está sendo pressionado ou não
+    ///@param botaoMouse  botão do mouse a ser analisado
     bool mousePressionado(int botaoMouse);
+    /// Verifica se o cursor do mouse se encontra entre as coordenadas \a (x1,y1) \a e \a (x2,y2) \a da tela do computador
+    ///@param x1  posição em \a X \a da coordenada \a (x1,y1) \a
+    ///@param x2  posição em \a X \a da coordenada \a (x1,y1) \a
+    ///@param y1  posição em \a Y \a da coordenada \a (x1,y1) \a
+    ///@param y2  posição em \a Y \a da coordenada \a (x1,y1) \a
     bool intervaloPosicaoMouse(int x1, int x2, int y1, int y2);
+    /// Retorna a posição do cursor do mouse
     sf::Vector2i retornaPosicaoMouse();
-    bool teclaLargada(int tecla, sf::Event event,sf::RenderWindow &window);
+    //bool teclaLargada(int tecla, sf::Event event,sf::RenderWindow &window);
+    /*/// Verifica se a tecla passada no parâmetro foi pressionada. Caso tenha sido, a ação atribuída a esta condição é realizada uma, e apenas uma, vez
+    ///@param tecla  tecla a ser analisada
+    ///
     bool pressionarTeclaUmaVez(int tecla, sf::Event event, sf::RenderWindow &window);
+   */
+    /// Verifica se a tecla passada no parâmetro foi pressionada. Caso tenha sido, a ação atribuída a esta condição é realizada uma, e apenas uma, vez
+    ///@param tecla  tecla a ser analisada
     bool teclaJustPressed(int tecla);
 
 };

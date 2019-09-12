@@ -13,7 +13,7 @@
 #include "Level.h"
 using namespace std;
 
-GerenciadorInput gerInp;
+
 
 void inicializar(int altura, int largura)
 {
@@ -122,7 +122,7 @@ void atualiza(int nivelAtual)
     janela->atualiza(data, nivelAtual, gerInp->justPressedKeys);
 }
 
-bool verificaTeclaPressionada(int id)
+/*bool verificaTeclaPressionada(int id)
 {
     switch (id){
     case 1:
@@ -163,7 +163,7 @@ bool verificaTeclaPressionada(int id)
         break;
     }
 
-}
+}*/
 /*void moveSprite(int id, float dirX, float dirY)
 {
     Dados *data = Dados::getInstance();
@@ -206,10 +206,6 @@ void instanciaUsaAnimacao(int instanciaId, int animacaoId)
 
 }
 
-void animationRun(int primeiroSprite, int tamanhoAnimacao)
-{
-
-}
 bool pressionarTecla(int tecla){
    // Janela *janela = Janela::getInstance();
    /* janela->window.setKeyRepeatEnabled(false);*/
@@ -217,12 +213,12 @@ bool pressionarTecla(int tecla){
    return gerInp->teclaPressionada(tecla);
 }
 
-bool largarTecla(int tecla)
+/*bool largarTecla(int tecla)
 {
    GerenciadorInput *gerInp = GerenciadorInput::getInstance();
    Janela *janela = Janela::getInstance();
    return gerInp->teclaLargada(tecla,janela->event, janela->window);
-}
+}*/
 
 bool pressionarTeclaUmaVez(int tecla)
 {
@@ -235,13 +231,13 @@ bool segurarTecla(int tecla){
     GerenciadorInput *gerInp = GerenciadorInput::getInstance();
     return gerInp->teclaPressionada(tecla);
 }
-void verificaTeclaLargada(int tecla){
+/*void verificaTeclaLargada(int tecla){
 
 }
 bool verificaMousePressionado(int botaoMouse){
     GerenciadorInput *gerInp = GerenciadorInput::getInstance();
     return gerInp->mousePressionado(botaoMouse);
-}
+}*/
 bool pressionarBotaoMouse(int botaoMouse){
     GerenciadorInput *gerInp = GerenciadorInput::getInstance();
     return gerInp->mousePressionado(botaoMouse);
@@ -255,10 +251,10 @@ bool verificaPosicaoMouseEmIntervalo(int x1, int x2, int y1, int y2){
     GerenciadorInput *gerInp = GerenciadorInput::getInstance();
     gerInp->intervaloPosicaoMouse(x1,x2,y1,y2);
 }
-sf::Vector2i retornaPosicaoMouse(){
+/*sf::Vector2i retornaPosicaoMouse(){
     GerenciadorInput *gerInp = GerenciadorInput::getInstance();
     gerInp->retornaPosicaoMouse();
-}
+}*/
 
 void criarCenario(std::string fileBackground, float largura, float altura, int cam){
     Dados *data = Dados::getInstance();
@@ -313,10 +309,10 @@ void moverInstancia(int idInstancia, float dx, float dy){
     Dados *data = Dados::getInstance();
     data->instancias[idInstancia].movePersonagem(dx, dy);
 }
-float retornaVelocidadeInstancia(int idInstancia){
+/*float retornaVelocidadeInstancia(int idInstancia){
 
 
-}
+}*/
 void colocarInstanciaPosicao(int idInstancia, float x, float y){
     Dados *data = Dados::getInstance();
     data->instancias[idInstancia].movePara(x,y);
@@ -361,10 +357,11 @@ void virarSpriteYInstanciaBaixo(int idInstancia){
 void criarAnimacao(float deltaTime, int idInstancia, string arquivoAnimacao){
     Dados *data = Dados::getInstance();
     Animation anim(0,deltaTime);
+
     if(arquivoAnimacao!=" ")
     {
     anim.criarAnimacaoDeArquivoIrregular(arquivoAnimacao);
-    std::cout<<anim.arquivoDaAnimacao<<" "<<anim.frames.size()<<std::endl;
+    //std::cout<<anim.arquivoDaAnimacao<<" "<<anim.frames.size()<<std::endl;
     }
 
     data->instancias[idInstancia].adicionaAnimacao(anim);
@@ -379,21 +376,27 @@ void associarArquivoAnimacao(int instanciaId, int animacaoInstanciaId, std::stri
     data->instancias[instanciaId].adicionaAnimacaoDepois(animacaoInstanciaId);
 }
 
+void criarFramesAnimacaoAutomaticamente(int idInstancia, int idAnimacao, string arquivoAnimacao){
+    Dados *data = Dados::getInstance();
+    data->instancias[idInstancia].animacoes[idAnimacao].criarAnimacaoDeArquivoIrregular(arquivoAnimacao);
+}
+
 void criarFrameAnimacaoManualmente(int instanciaId, int animacaoInstanciaId, float x, float y, float dx, float dy){
     Dados *data = Dados::getInstance();
     data->instancias[instanciaId].animacoes[animacaoInstanciaId].criarFrameManualmente(x,y,dx,dy);
     //data->recebeAnimacao(anim);
 }
 
-void apagarAnimacao(int id){
+/*void apagarAnimacao(int id){
     Dados *data = Dados::getInstance();
     data->apagarAnimacao(id);
-}
+}*/
 
-bool analisaColisaoPontoEspecificoInstancias(int id1, int id2){
+/*bool analisaColisaoPontoEspecificoInstancias(int id1, int id2){
     //Dados *data = Dados::getInstance();
     //data->analisaColisaoInstancias(id1, id2);
-}
+}*/
+
 bool analisaColisaoInstancias(int id1,int id2){
     Dados *data = Dados::getInstance();
     data->analisaColisaoInstancias(id1,id2);

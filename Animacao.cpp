@@ -27,15 +27,15 @@ void Animation::setTimer(clock_t timer)
     this->timer = timer;
 }
 
-std::vector<sf::Texture*> &Animation::getFrames()
+/*std::vector<sf::Texture*> &Animation::getFrames()
 {
 //    return *frames;
-}
+}*/
 
-void Animation::setFrames()
+/*void Animation::setFrames()
 {
 //    this->frames = &frames;
-}
+}*/
 
 clock_t Animation::getDeltaTime()
 {
@@ -70,7 +70,7 @@ void Animation::criarAnimacaoDeArquivoRegular(std::string file,int divX, int div
 {
 
     sf::Texture *tex = new sf::Texture();
-    std::cout << "Created " << tex << std::endl;
+    //std::cout << "Created " << tex << std::endl;
     tex->loadFromFile(file);
 
     for(int i=0; i<divY; i++)
@@ -88,8 +88,6 @@ void Animation::criarAnimacaoDeArquivoRegular(std::string file,int divX, int div
 
         }
     }
-
-
 
 }
 
@@ -118,7 +116,7 @@ void Animation::criarAnimacaoDeArquivoIrregular(std::string file)
         }
     }
     ///MatrizFloodFill indica quais pixels ja foram visitados
-std::cout<<"arquivo irregular"<<std::endl;
+//std::cout<<"arquivo irregular"<<std::endl;
     for(int j=0; j<img->getSize().y; j++)
     {
         for(int i=0; i<img->getSize().x; i++)
@@ -160,28 +158,28 @@ std::cout<<"arquivo irregular"<<std::endl;
 {
     stack<sf::Color> pilhaBusca;
 
-    if(img.getPixel(i,j).a>100 && !matriz[i][j])///Se o pixel visitado n„o ser transparente e n„o foi visitado ainda
+    if(img.getPixel(i,j).a>100 && !matriz[i][j])///Se o pixel visitado n√£o ser transparente e n√£o foi visitado ainda
     {
         pilhaBusca.push(img.getPixel(i,j));///Coloca o pixel na pilha
         matriz[i][j]=true;///Marca o pixel como visitado
 
-        if(i>frame.x + frame.dx)///Se o pixel em quest„o È maior que o limite superior do sprite, ent„o o pixel È o novo limite superior em x
+        if(i>frame.x + frame.dx)///Se o pixel em quest√£o √© maior que o limite superior do sprite, ent√£o o pixel √© o novo limite superior em x
         {
             frame.dx = frame.x - i;
         }else
         {
-            if(i<frame.x)///Se o pixel em quest„o È menor que o limite inferior do sprite, ent„o o pixel È o novo limite inferior em x
+            if(i<frame.x)///Se o pixel em quest√£o √© menor que o limite inferior do sprite, ent√£o o pixel √© o novo limite inferior em x
             {
              frame.x = i;
             }
         }
 
-        if(j>frame.y + frame.dy)///Se o pixel em quest„o È maior que o limite superior do sprite, ent„o o pixel È o novo limite superior em y
+        if(j>frame.y + frame.dy)///Se o pixel em quest√£o √© maior que o limite superior do sprite, ent√£o o pixel √© o novo limite superior em y
         {
             frame.dy = frame.y - j;
         }else
         {
-            if(j<frame.y)///Se o pixel em quest„o È menor que o limite inferior do sprite, ent„o o pixel È o novo limite inferior em y
+            if(j<frame.y)///Se o pixel em quest√£o √© menor que o limite inferior do sprite, ent√£o o pixel √© o novo limite inferior em y
             {
              frame.y = j;
             }
@@ -291,7 +289,7 @@ AnimationFrame Animation::rodarAnimacaoDeArquivoRegular(std::string file){
 void Animation::criarAnimacaoComParteDeArquivo(std::string file, int divX, int divY, int linha1, int linha2){
 
     sf::Texture *tex = new sf::Texture();
-    std::cout << "Created " << tex << std::endl;
+   // std::cout << "Created " << tex << std::endl;
     tex->loadFromFile(file);
 
      for(int i=linha1; i<linha2; i++)
@@ -326,9 +324,11 @@ void Animation::criarFrameManualmente(int x, int y, int dx, int dy){
 
 void Animation::associarArquivoAnimacao(std::string arquivo){
     sf::Texture *tex = new sf::Texture();
-    std::cout << "ALO ALO " << tex << std::endl;
+    //std::cout << "ALO ALO " << tex << std::endl;
     tex->loadFromFile(arquivo);
     arquivoDaAnimacao = arquivo;
+    arquivoAnimacao.loadFromFile(arquivo);
+
 }
 
 

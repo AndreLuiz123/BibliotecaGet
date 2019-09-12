@@ -39,6 +39,7 @@ bool Janela::janelaAberta()
 void Janela::atualiza(Dados *data, int nivelAtual, bool *keyPressed)
 {
 
+    window.setFramerateLimit(60);
     /*while(window.pollEvent(event))
     {
         //if(event.type == sf::Event::Closed)
@@ -374,6 +375,8 @@ void Janela::atualiza(Dados *data, int nivelAtual, bool *keyPressed)
         window.draw(data->niveis[nivelAtual].background);
     }
 
+
+
     for(unsigned int i = 0; i < data->instancias.size(); i++)
     {
         //window.draw(data->spriteList[i]);
@@ -392,6 +395,16 @@ void Janela::setAltura(int alt)
 void Janela::setLargura(int larg)
 {
     largura = larg;
+}
+
+float Janela::getAltura()
+{
+    return altura;
+}
+
+float Janela::getLargura()
+{
+    return largura;
 }
 
 /*void Janela::rodar()

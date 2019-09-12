@@ -31,7 +31,7 @@ void Instancia::adicionaAnimacao(Animation anim)
     if(anim.arquivoDaAnimacao!=" ")
     {
     sf::Texture *t = new sf::Texture();
-    std::cout << "Created " << t << std::endl;
+    //std::cout << "Created " << t << std::endl;
     t->loadFromFile(anim.arquivoDaAnimacao);
     sprite.setTexture(*t);
     }
@@ -41,9 +41,10 @@ void Instancia::adicionaAnimacaoDepois(int anim)
 {
     // teste->setTexture(anim.arquivoDaAnimacao);
     sf::Texture *t = new sf::Texture();
-    std::cout << "Created " << t << std::endl;
+    //std::cout << "Created " << t << std::endl;
     t->loadFromFile(animacoes[anim].arquivoDaAnimacao);
     sprite.setTexture(*t);
+
 }
 
 void Instancia::movePara(int x, int y)

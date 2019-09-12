@@ -40,12 +40,21 @@ void Level::padraoCameraJogador(Instancia inst)
 
     if(inst.sprite.getPosition().y - cam->camera.getSize().y/2 >= 0 && inst.sprite.getPosition().y + cam->camera.getSize().y/2 <= height)
     {
+
         y = inst.sprite.getPosition().y;
     }
     else
     {
+
         y = cam->camera.getCenter().y;
     }
+
+    if(inst.sprite.getPosition().y > cam->camera.getCenter().y + cam->camera.getSize().y/2 || inst.sprite.getPosition().y < cam->camera.getCenter().y - cam->camera.getSize().y/2)
+    {
+      x = inst.sprite.getPosition().x;
+      y = inst.sprite.getPosition().y;
+    }
+
     cam->camera.setCenter(sf::Vector2f(x,y));
    // cam->camera.setCenter(sf::Vector2f(inst.sprite.getPosition().x,inst.sprite.getPosition().y));
 

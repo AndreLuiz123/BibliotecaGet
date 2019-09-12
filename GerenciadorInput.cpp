@@ -48,7 +48,7 @@ bool GerenciadorInput::teclaJustPressed(int tecla)
     return false;
 }
 
-bool GerenciadorInput::teclaLargada(int tecla, sf::Event event, sf::RenderWindow &window){
+/*bool GerenciadorInput::teclaLargada(int tecla, sf::Event event, sf::RenderWindow &window){
 
     if(event.type == sf::Event::KeyReleased)
     {
@@ -1275,7 +1275,7 @@ bool GerenciadorInput::pressionarTeclaUmaVez(int tecla, sf::Event event, sf::Ren
     }
 
     return false;
-}
+}*/
 
 bool GerenciadorInput::mousePressionado(int botaoMouse){
 
