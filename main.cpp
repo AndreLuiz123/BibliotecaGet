@@ -102,8 +102,8 @@ int main()
       //  timer += clock();
        //     timer -= fps;
          instanciaUsaAnimacao(caveira, 0);
-           if(andaDireita)
-           {
+           /*if(andaDireita)
+           {*/
             if(pressionarTeclaUmaVez(TECLA_DIREITA))
             {
                 /*std::cout<<ultimaVel<<" deve ser menor que 0"<<std::endl;
@@ -119,10 +119,10 @@ int main()
                 ultimaVel = 0.05;
             }
 
-           }
+           //}
 
-           if(andaEsquerda)
-           {
+           /*if(andaEsquerda)
+           {*/
             if(pressionarTeclaUmaVez(TECLA_ESQUERDA))
             {
                 instanciaUsaAnimacao(caveira,1);
@@ -140,7 +140,7 @@ int main()
                 ultimaVel = -0.05;
             }
 
-           }
+           //}
 
 
             if(!estaChao)

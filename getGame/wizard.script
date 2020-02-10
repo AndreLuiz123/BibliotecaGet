@@ -1,0 +1,85 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+// Code::Blocks new project wizard script
+//
+// Project: GetGame application
+// Author:  André Luiz Vasconcelos Ferreira
+//
+// Wizard scripts documentation can be found at:
+// http://wiki.codeblocks.org/index.php?title=Wizard_scripts
+//
+////////////////////////////////////////////////////////////////////////////////
+
+multi_thread_dynamic <- true; //Default to Multi-thread. For MSVC only.
+ConsoleLang <- 1; // default to C++
+WizardType  <- 0; // 0 - Project, 1 - Target
+
+//
+//------------------------------------------------------------------------------
+//
+function BeginWizard()
+{
+    //local wiz_type = Wizard.GetWizardType();
+
+  //Mensagem de introdução
+  local introducaoGetGame = _T("Bem vindo ao GetGameLib!\nAs páginas a seguir irão auxiliar na criacao de um projeto GetGame!\n"+
+                                  "Clique em \"Next\" para prosseguir");
+    //Cria primeira tela
+    Wizard.AddInfoPage(_T("getGame"),introducaoGetGame);
+    //Cria tela que salva projeto em caminho determinado pelo usuário
+    Wizard.AddProjectPathPage();
+    //Cria o compilador(não entendo muito bem esta parte, mas sei que ela esta em todos os códigos Wizard que parei pra ver)
+    Wizard.AddCompilerPage(_T(""), _T("*"), true, true);
+
+
+}
+
+function GetFilesDir(){
+
+  local result;
+
+      result = _T("getGame/getCpp");
+
+  return result;
+}
+
+function SetupProject(project){
+
+  local target = project.GetBuildTarget(Wizard.GetDebugName());
+
+
+  if(!IsNull(target)){
+
+    target.SetOutputFilename(Wizard.GetReleaseOutputDir() + Wizard.GetProjectName() + DOT_EXT_EXECUTABLE);
+
+    local suffix = _T("-d");
+
+    target.SetTargetType(ttConsoleOnly);
+
+    target.AddLinkLib(_T("GetGameLib"));
+    target.AddLinkLib(_T("sfml-graphics-s") + suffix);
+    target.AddLinkLib(_T("sfml-window-s") + suffix);
+    target.AddLinkLib(_T("sfml-system-s") + suffix);
+    target.AddLinkLib(_T("opengl32"));
+    target.AddLinkLib(_T("winmm"));
+    target.AddLinkLib(_T("gdi32"));
+    target.AddLinkLib(_T("freetype"));
+  }
+
+  target = project.GetBuildTarget(Wizard.GetReleaseName());
+
+    if(!IsNull(target)){
+
+      target.SetOutputFilename(Wizard.GetReleaseOutputDir() + Wizard.GetProjectName() + DOT_EXT_EXECUTABLE);
+      target.AddLinkLib(_T("GetGameLib"));
+      target.AddLinkLib(_T("sfml-graphics-s"));
+      target.AddLinkLib(_T("sfml-window-s"));
+      target.AddLinkLib(_T("sfml-system-s"));
+      target.AddLinkLib(_T("opengl32"));
+      target.AddLinkLib(_T("winmm"));
+      target.AddLinkLib(_T("gdi32"));
+      target.AddLinkLib(_T("freetype"));
+    }
+
+return true;
+}
